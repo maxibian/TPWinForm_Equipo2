@@ -1,6 +1,6 @@
 ﻿namespace TPWinForm_equipo_2
 {
-    partial class Form1
+    partial class FormArticulos
     {
         /// <summary>
         /// Required designer variable.
@@ -72,7 +72,7 @@
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // FormArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -81,8 +81,8 @@
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.dgvListaArticulos);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "FormArticulos";
+            this.Text = "Lista de Artículos";
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaArticulos)).EndInit();
             this.ResumeLayout(false);
 
