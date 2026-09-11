@@ -83,6 +83,7 @@
             this.Controls.Add(this.dgvListaArticulos);
             this.Name = "FormArticulos";
             this.Text = "Lista de Artículos";
+            this.Load += new System.EventHandler(this.FormArticulos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaArticulos)).EndInit();
             this.ResumeLayout(false);
 

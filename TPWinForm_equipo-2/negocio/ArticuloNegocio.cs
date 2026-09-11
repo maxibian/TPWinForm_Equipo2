@@ -17,18 +17,18 @@ namespace negocio
             List<Articulo> lista = new List<Articulo>();
             try
             {
-                datos.setearConsulta("Select.....");
+                datos.setearConsulta("SELECT Nombre, Descripcion, Precio from ARTICULOS");
                 datos.ejecutarLectura();
                 while(datos.Lector.Read())
                 {
                     Articulo aux = new Articulo();
-                    aux.Id = (int)datos.Lector["Id"];
-                    aux.Codigo = (string)datos.Lector["Codigo"];
+                    //aux.Id = (int)datos.Lector["Id"];
+                    //aux.Codigo = (string)datos.Lector["Codigo"];
                     aux.Nombre = (string)datos.Lector["Nombre"];
                     aux.Descripcion = (string)datos.Lector["Descripcion"];
                     //aux.IdMarca=(Marca)
                     //aux.Categoria=(Categoria)
-                    aux.Imagen = (string)datos.Lector["Imagen"];
+                    //aux.Imagen = (string)datos.Lector["Imagen"];
                     aux.Precio = (decimal)datos.Lector["Precio"];
 
                     lista.Add(aux);

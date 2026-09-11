@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using negocio;
 
 namespace TPWinForm_equipo_2
 {
@@ -15,6 +16,12 @@ namespace TPWinForm_equipo_2
         public FormArticulos()
         {
             InitializeComponent();
+        }
+
+        private void FormArticulos_Load(object sender, EventArgs e)
+        {
+            //ArticuloNegocio negocio = new ArticuloNegocio();
+            //dgvListaArticulos.DataSource = negocio.listarArticulos();
         }
     }
 }
