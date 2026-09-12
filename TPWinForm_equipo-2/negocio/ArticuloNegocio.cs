@@ -38,7 +38,6 @@ namespace negocio
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
 
@@ -46,6 +45,10 @@ namespace negocio
             {
                 datos.cerrarConexion();
             }
+        }
+
+        public void agregar()
+        {
 
         }
     }

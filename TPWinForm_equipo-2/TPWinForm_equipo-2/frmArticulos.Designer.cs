@@ -1,6 +1,6 @@
 ﻿namespace TPWinForm_equipo_2
 {
-    partial class FormArticulos
+    partial class frmArticulos
     {
         /// <summary>
         /// Required designer variable.
@@ -53,6 +53,7 @@
             this.btnAgregar.TabIndex = 1;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnModificar
             // 
