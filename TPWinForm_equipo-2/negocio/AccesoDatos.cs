@@ -46,10 +46,25 @@ namespace negocio
                 throw ex;
             } 
         }
+        public void ejecutarAccion()
+        {
+            comando.Connection = conexion;
+
+            try
+            {
+                conexion.Open();
+                lector = comando.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
         public void cerrarConexion()
         {
             if(lector != null)
-                lector.Close();
+               lector.Close();
             conexion.Close();
         }
     }
