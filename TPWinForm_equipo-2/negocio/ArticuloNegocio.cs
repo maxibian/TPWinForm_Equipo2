@@ -32,7 +32,7 @@ namespace negocio
                     aux.Precio = (decimal)datos.Lector["Precio"];
 
                     lista.Add(aux);
-    }
+                }
 
                 return lista;
             }
@@ -40,6 +40,11 @@ namespace negocio
             {
 
                 throw ex;
+            }
+
+            finally
+            {
+                datos.cerrarConexion();
             }
 
         }
