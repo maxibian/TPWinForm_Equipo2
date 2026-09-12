@@ -17,11 +17,16 @@ namespace negocio
         {
             get { return lector; }
         }
+        public AccesoDatos(string acceso)
+        {
+            conexion = new SqlConnection(acceso);
+            comando = new SqlCommand();
+        }
 
         public AccesoDatos()
         {
             conexion = new SqlConnection("server=.\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true");
-            comando = new SqlCommand();    
+            comando = new SqlCommand();
         }
         public void setearConsulta(string consulta)
         {
