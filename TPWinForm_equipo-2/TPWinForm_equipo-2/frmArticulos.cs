@@ -20,8 +20,8 @@ namespace TPWinForm_equipo_2
 
         private void FormArticulos_Load(object sender, EventArgs e)
         {
-            //ArticuloNegocio negocio = new ArticuloNegocio();
-            //dgvListaArticulos.DataSource = negocio.listarArticulos();
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            dgvListaArticulos.DataSource = negocio.listarArticulos();
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
