@@ -17,12 +17,12 @@ namespace negocio
             List<Articulo> lista = new List<Articulo>();
             try
             {
-                datos.setearConsulta("SELECT Nombre, Descripcion, Precio from ARTICULOS");
+                datos.setearConsulta("SELECT Id, Nombre, Descripcion, Precio from ARTICULOS");
                 datos.ejecutarLectura();
                 while(datos.Lector.Read())
                 {
                     Articulo aux = new Articulo();
-                    //aux.Id = (int)datos.Lector["Id"];
+                    aux.Id = (int)datos.Lector["Id"];
                     //aux.Codigo = (string)datos.Lector["Codigo"];
                     aux.Nombre = (string)datos.Lector["Nombre"];
                     aux.Descripcion = (string)datos.Lector["Descripcion"];
@@ -53,7 +53,10 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("INSERT INTO ARTICULOS (Nombre, Descripcion, Precio)values(1,1,1)");
+                datos.setearConsulta("INSERT INTO ARTICULOS (Nombre, Descripcion, Precio)values(@Nombre,@Descripcion,@Precio)");
+                datos.setearParametro("@Nombre", art.Nombre);
+                datos.setearParametro("@Descripcion", art.Descripcion);
+                datos.setearParametro("@Precio", art.Precio);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -80,12 +83,13 @@ namespace negocio
                 throw ex;
             }
         }
-        public void eliminar(Articulo art) 
+        public void eliminar(int id) 
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("DELETE FROM ARTICULOS Where Id =....");
+                datos.setearConsulta("DELETE FROM ARTICULOS Where Id = @id");
+                datos.setearParametro("@id", id);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
