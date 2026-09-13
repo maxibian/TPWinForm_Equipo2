@@ -34,7 +34,13 @@ namespace TPWinForm_equipo_2
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
+            Articulo seleccionado;
+            seleccionado = (Articulo)dgvListaArticulos.CurrentRow.DataBoundItem;
+            frmAltaArticulo modificar = new frmAltaArticulo(seleccionado);
+            modificar.Text = "Modificar Artículo"; 
+            modificar.ShowDialog();
 
+            //cargar();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)

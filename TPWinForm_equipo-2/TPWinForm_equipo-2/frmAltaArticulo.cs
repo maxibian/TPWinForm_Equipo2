@@ -14,9 +14,15 @@ namespace TPWinForm_equipo_2
 {
     public partial class frmAltaArticulo : Form
     {
+        private Articulo art = null;
         public frmAltaArticulo()
         {
             InitializeComponent();
+        }
+        public frmAltaArticulo(Articulo art)
+        {
+            InitializeComponent();
+            this.art = art; 
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -43,6 +49,18 @@ namespace TPWinForm_equipo_2
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void frmAltaArticulo_Load(object sender, EventArgs e)
+        {
+            //cboMarca
+            //cboCategoria
+            if(art != null)
+            {
+                txtNombre.Text = art.Nombre.ToString();
+                txtDescripcion.Text = art.Descripcion.ToString();
+                txtPrecio.Text = art.Precio.ToString();
             }
         }
     }
