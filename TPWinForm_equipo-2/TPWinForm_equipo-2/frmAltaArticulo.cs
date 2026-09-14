@@ -42,6 +42,7 @@ namespace TPWinForm_equipo_2
                 art.Precio = decimal.Parse(txtPrecio.Text);
                 //art.Marca;
                 //art.Categoria;
+
                 articuloNegocio.agregar(art);
                 MessageBox.Show("Articulo agregado exitosamente");
                 Close();
@@ -54,13 +55,21 @@ namespace TPWinForm_equipo_2
 
         private void frmAltaArticulo_Load(object sender, EventArgs e)
         {
+            MarcaNegocio marcaNegocio = new MarcaNegocio();
+            CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
+            cboMarca.DataSource = marcaNegocio.listarMarcas();
+            cboCategoria.DataSource = categoriaNegocio.listarCategorias();
             //cboMarca
             //cboCategoria
-            if(art != null)
+            if (art != null)
             {
                 txtNombre.Text = art.Nombre.ToString();
                 txtDescripcion.Text = art.Descripcion.ToString();
                 txtPrecio.Text = art.Precio.ToString();
+                txtCodigo.Text = art.Codigo.ToString();
+                //txtImagen
+                cboMarca.DataSource = marcaNegocio.listarMarcas();
+                cboCategoria.DataSource = categoriaNegocio.listarCategorias();
             }
         }
     }
