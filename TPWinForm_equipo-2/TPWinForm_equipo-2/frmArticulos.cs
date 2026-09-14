@@ -23,6 +23,7 @@ namespace TPWinForm_equipo_2
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
             dgvListaArticulos.DataSource = negocio.listarArticulos();
+            dgvListaArticulos.Columns["Id"].Visible = false;
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
