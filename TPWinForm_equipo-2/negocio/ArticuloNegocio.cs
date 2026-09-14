@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using dominio;
+using negocio;
 using System.Net;
 
 namespace negocio
@@ -100,5 +101,6 @@ namespace negocio
                 throw ex;
             }
         }
+        
     }
 }

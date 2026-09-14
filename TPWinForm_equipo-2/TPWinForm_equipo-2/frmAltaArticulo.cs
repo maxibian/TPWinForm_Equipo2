@@ -22,7 +22,7 @@ namespace TPWinForm_equipo_2
         public frmAltaArticulo(Articulo art)
         {
             InitializeComponent();
-            this.art = art; 
+            this.art = art;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -46,7 +46,7 @@ namespace TPWinForm_equipo_2
                 articuloNegocio.agregar(art);
                 MessageBox.Show("Articulo agregado exitosamente");
                 Close();
-             }
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
@@ -57,20 +57,27 @@ namespace TPWinForm_equipo_2
         {
             MarcaNegocio marcaNegocio = new MarcaNegocio();
             CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
-            cboMarca.DataSource = marcaNegocio.listarMarcas();
-            cboCategoria.DataSource = categoriaNegocio.listarCategorias();
-            //cboMarca
-            //cboCategoria
-            if (art != null)
+            try
             {
-                txtNombre.Text = art.Nombre.ToString();
-                txtDescripcion.Text = art.Descripcion.ToString();
-                txtPrecio.Text = art.Precio.ToString();
-                txtCodigo.Text = art.Codigo.ToString();
-                //txtImagen
                 cboMarca.DataSource = marcaNegocio.listarMarcas();
                 cboCategoria.DataSource = categoriaNegocio.listarCategorias();
+                if (art != null)
+                {
+                    txtNombre.Text = art.Nombre.ToString();
+                    txtDescripcion.Text = art.Descripcion.ToString();
+                    txtPrecio.Text = art.Precio.ToString();
+                    txtCodigo.Text = art.Codigo.ToString();
+                    //Imagen
+                    cboMarca.DataSource = marcaNegocio.listarMarcas();
+                    cboCategoria.DataSource = categoriaNegocio.listarCategorias();
+                }
+
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
         }
     }
 }

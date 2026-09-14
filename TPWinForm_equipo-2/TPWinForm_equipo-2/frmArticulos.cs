@@ -14,16 +14,15 @@ namespace TPWinForm_equipo_2
 {
     public partial class frmArticulos : Form
     {
+        private List<Articulo> listaArticulos;
         public frmArticulos()
         {
             InitializeComponent();
         }
 
-        private void FormArticulos_Load(object sender, EventArgs e)
+        private void frmArticulos_Load(object sender, EventArgs e)
         {
-            ArticuloNegocio negocio = new ArticuloNegocio();
-            dgvListaArticulos.DataSource = negocio.listarArticulos();
-            dgvListaArticulos.Columns["Id"].Visible = false;
+            cargar(); 
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -58,6 +57,22 @@ namespace TPWinForm_equipo_2
                     //cargar(); //recarga la dgv
                 }
 
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        private void cargar()
+        {
+            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+            try
+            {
+                listaArticulos = articuloNegocio.listarArticulos();
+                dgvListaArticulos.DataSource = listaArticulos;
+                dgvListaArticulos.Columns["Id"].Visible = false;
+                //cargarImagen
             }
             catch (Exception)
             {
