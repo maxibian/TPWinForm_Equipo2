@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using dominio;
 using negocio;
 using System.Net;
+using System.Diagnostics;
 
 namespace negocio
 {
@@ -18,7 +19,7 @@ namespace negocio
             List<Articulo> lista = new List<Articulo>();
             try
             {
-                datos.setearConsulta("SELECT A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion as Marca, C.Descripcion as Categoria, Precio FROM ARTICULOS A, MARCAS M, CATEGORIAS C WHERE A.IdMarca = M.Id and A.IdCategoria = C.Id");
+                datos.setearConsulta("SELECT A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion as Marca, C.Descripcion as Categoria,M.Id as IdMarca,C.Id as IdCategoria, Precio FROM ARTICULOS A, MARCAS M, CATEGORIAS C WHERE A.IdMarca = M.Id and A.IdCategoria = C.Id");
                 datos.ejecutarLectura();
                 while(datos.Lector.Read())
                 {
@@ -28,8 +29,10 @@ namespace negocio
                     aux.Nombre = (string)datos.Lector["Nombre"];
                     aux.Descripcion = (string)datos.Lector["Descripcion"];
                     aux.Marca = new Marca();
+                    aux.Marca.Id = (int)datos.Lector["IdMarca"];
                     aux.Marca.Descripcion = (string)datos.Lector["Marca"];
                     aux.Categoria = new Categoria();
+                    aux.Categoria.Id = (int)datos.Lector["IdCategoria"];
                     aux.Categoria.Descripcion = (string)datos.Lector["Categoria"];
                     //aux.Imagen 
                     aux.Precio = (decimal)datos.Lector["Precio"];

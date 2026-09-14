@@ -23,6 +23,7 @@ namespace TPWinForm_equipo_2
         {
             InitializeComponent();
             this.art = art;
+            Text = "Modificar Artículo";
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -30,9 +31,9 @@ namespace TPWinForm_equipo_2
             Close();
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e)
+        private void btnAceptar_Click(object sender, EventArgs e)
         {
-            Articulo art = new Articulo();
+            //Articulo art = new Articulo();
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
             try
             {
@@ -42,7 +43,13 @@ namespace TPWinForm_equipo_2
                 art.Precio = decimal.Parse(txtPrecio.Text);
                 //art.Marca;
                 //art.Categoria;
-
+                art.Marca = (Marca)cboMarca.SelectedItem;
+                art.Categoria = (Categoria)cboCategoria.SelectedItem;
+                if (art.Id != 0)
+                {
+                    articuloNegocio.modificar(art);
+                    MessageBox.Show("Modificado exitosamente");
+                }
                 articuloNegocio.agregar(art);
                 MessageBox.Show("Articulo agregado exitosamente");
                 Close();
@@ -60,16 +67,21 @@ namespace TPWinForm_equipo_2
             try
             {
                 cboMarca.DataSource = marcaNegocio.listarMarcas();
+                cboMarca.ValueMember = "Id";
+                cboMarca.DisplayMember = "Descripcion";
                 cboCategoria.DataSource = categoriaNegocio.listarCategorias();
+                cboCategoria.ValueMember = "Id";
+                cboCategoria.DisplayMember = "Descripcion";
                 if (art != null)
                 {
                     txtNombre.Text = art.Nombre.ToString();
                     txtDescripcion.Text = art.Descripcion.ToString();
                     txtPrecio.Text = art.Precio.ToString();
                     txtCodigo.Text = art.Codigo.ToString();
+                    cboMarca.SelectedValue = art.Marca.Id;
+                    cboCategoria.SelectedValue = art.Categoria.Id;
+
                     //Imagen
-                    cboMarca.DataSource = marcaNegocio.listarMarcas();
-                    cboCategoria.DataSource = categoriaNegocio.listarCategorias();
                 }
 
             }
