@@ -96,7 +96,7 @@
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.dgvListaArticulos);
             this.Name = "frmArticulos";
-            this.Text = "Lista de Artículos";
+            this.Text = "Artículos";
             this.Load += new System.EventHandler(this.frmArticulos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaArticulos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

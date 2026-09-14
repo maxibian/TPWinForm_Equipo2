@@ -33,16 +33,16 @@ namespace TPWinForm_equipo_2
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            //Articulo art = new Articulo();
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
             try
             {
+                if (art == null)
+                    art = new Articulo();
                 art.Nombre = txtNombre.Text;
                 art.Descripcion = txtDescripcion.Text;
+                art.Codigo = txtCodigo.Text;
                 //art.Imagen = txtImagen.Text;
                 art.Precio = decimal.Parse(txtPrecio.Text);
-                //art.Marca;
-                //art.Categoria;
                 art.Marca = (Marca)cboMarca.SelectedItem;
                 art.Categoria = (Categoria)cboCategoria.SelectedItem;
                 if (art.Id != 0)
@@ -50,8 +50,11 @@ namespace TPWinForm_equipo_2
                     articuloNegocio.modificar(art);
                     MessageBox.Show("Modificado exitosamente");
                 }
-                articuloNegocio.agregar(art);
-                MessageBox.Show("Articulo agregado exitosamente");
+                else
+                {
+                    articuloNegocio.agregar(art);
+                    MessageBox.Show("Articulo agregado exitosamente");
+                }
                 Close();
             }
             catch (Exception ex)
