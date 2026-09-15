@@ -29,7 +29,7 @@ namespace TPWinForm_equipo_2
         {
             frmAltaArticulo alta = new frmAltaArticulo();
             alta.ShowDialog();
-            
+            cargar();
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -39,8 +39,7 @@ namespace TPWinForm_equipo_2
             frmAltaArticulo modificar = new frmAltaArticulo(seleccionado);
             modificar.Text = "Modificar Artículo"; 
             modificar.ShowDialog();
-
-            //cargar();
+            cargar();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -54,14 +53,12 @@ namespace TPWinForm_equipo_2
                 {
                     seleccionado = (Articulo)dgvListaArticulos.CurrentRow.DataBoundItem;
                     articuloNegocio.eliminar(seleccionado.Id);
-                    //cargar(); //recarga la dgv
+                    cargar();
                 }
-
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                throw ex;
             }
         }
         private void cargar()
@@ -74,10 +71,9 @@ namespace TPWinForm_equipo_2
                 dgvListaArticulos.Columns["Id"].Visible = false;
                 //cargarImagen
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                throw ex;
             }
         }
     }
