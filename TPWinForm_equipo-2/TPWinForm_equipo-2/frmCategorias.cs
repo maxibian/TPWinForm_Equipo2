@@ -57,5 +57,28 @@ namespace TPWinForm_equipo_2
             modificarCategoria.ShowDialog();
             cargar();
         }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            CategoriaNegocio catNegocio = new CategoriaNegocio();
+            Categoria seleccionada = new Categoria();
+            try
+            {
+                DialogResult respuesta = MessageBox.Show("¿Estas seguro de que quere eliminarlo?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if(respuesta == DialogResult.Yes)
+                {
+                    seleccionada = (Categoria)dgvCategorias.CurrentRow.DataBoundItem;
+                    catNegocio.eliminar(seleccionada.Id);
+                    cargar();
+                }
+                
+                
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }
