@@ -28,33 +28,70 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dgvCategorias = new System.Windows.Forms.DataGridView();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCategorias)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvCategorias
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(351, 265);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvCategorias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCategorias.Location = new System.Drawing.Point(12, 12);
+            this.dgvCategorias.Name = "dgvCategorias";
+            this.dgvCategorias.Size = new System.Drawing.Size(351, 265);
+            this.dgvCategorias.TabIndex = 0;
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.Location = new System.Drawing.Point(12, 303);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
+            this.btnAgregar.TabIndex = 1;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            // 
+            // btnModificar
+            // 
+            this.btnModificar.Location = new System.Drawing.Point(154, 303);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(75, 23);
+            this.btnModificar.TabIndex = 2;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.UseVisualStyleBackColor = true;
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Location = new System.Drawing.Point(288, 303);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminar.TabIndex = 3;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
             // 
             // frmCategorias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(375, 450);
-            this.Controls.Add(this.dataGridView1);
+            this.ClientSize = new System.Drawing.Size(375, 347);
+            this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.btnModificar);
+            this.Controls.Add(this.btnAgregar);
+            this.Controls.Add(this.dgvCategorias);
             this.Name = "frmCategorias";
             this.Text = "Categorias";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.frmCategorias_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCategorias)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvCategorias;
+        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.Button btnEliminar;
     }
 }
