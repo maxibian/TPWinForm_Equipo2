@@ -33,6 +33,7 @@
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnAdminCategorias = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -43,22 +44,24 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dgvListaArticulos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvListaArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvListaArticulos.Location = new System.Drawing.Point(38, 47);
+            this.dgvListaArticulos.Location = new System.Drawing.Point(28, 38);
+            this.dgvListaArticulos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvListaArticulos.MultiSelect = false;
             this.dgvListaArticulos.Name = "dgvListaArticulos";
             this.dgvListaArticulos.ReadOnly = true;
             this.dgvListaArticulos.RowHeadersWidth = 51;
             this.dgvListaArticulos.RowTemplate.Height = 24;
             this.dgvListaArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvListaArticulos.Size = new System.Drawing.Size(800, 300);
+            this.dgvListaArticulos.Size = new System.Drawing.Size(600, 244);
             this.dgvListaArticulos.TabIndex = 0;
             // 
             // btnAgregar
             // 
             this.btnAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAgregar.Location = new System.Drawing.Point(579, 378);
+            this.btnAgregar.Location = new System.Drawing.Point(434, 307);
+            this.btnAgregar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(80, 30);
+            this.btnAgregar.Size = new System.Drawing.Size(60, 24);
             this.btnAgregar.TabIndex = 1;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
@@ -67,9 +70,10 @@
             // btnModificar
             // 
             this.btnModificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnModificar.Location = new System.Drawing.Point(665, 378);
+            this.btnModificar.Location = new System.Drawing.Point(499, 307);
+            this.btnModificar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(80, 30);
+            this.btnModificar.Size = new System.Drawing.Size(60, 24);
             this.btnModificar.TabIndex = 2;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
@@ -78,9 +82,10 @@
             // btnEliminar
             // 
             this.btnEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnEliminar.Location = new System.Drawing.Point(751, 378);
+            this.btnEliminar.Location = new System.Drawing.Point(563, 307);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(80, 30);
+            this.btnEliminar.Size = new System.Drawing.Size(60, 24);
             this.btnEliminar.TabIndex = 3;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
@@ -88,25 +93,38 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(867, 47);
+            this.pictureBox1.Location = new System.Drawing.Point(650, 38);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(300, 300);
+            this.pictureBox1.Size = new System.Drawing.Size(225, 244);
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
+            // btnAdminCategorias
+            // 
+            this.btnAdminCategorias.Location = new System.Drawing.Point(28, 307);
+            this.btnAdminCategorias.Name = "btnAdminCategorias";
+            this.btnAdminCategorias.Size = new System.Drawing.Size(127, 23);
+            this.btnAdminCategorias.TabIndex = 5;
+            this.btnAdminCategorias.Text = "Administrar Categorias";
+            this.btnAdminCategorias.UseVisualStyleBackColor = true;
+            this.btnAdminCategorias.Click += new System.EventHandler(this.btnAdminCategorias_Click);
+            // 
             // frmArticulos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1198, 450);
+            this.ClientSize = new System.Drawing.Size(900, 372);
+            this.Controls.Add(this.btnAdminCategorias);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.dgvListaArticulos);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1216, 900);
-            this.MinimumSize = new System.Drawing.Size(1216, 497);
+            this.MaximumSize = new System.Drawing.Size(916, 739);
+            this.MinimumSize = new System.Drawing.Size(916, 411);
             this.Name = "frmArticulos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Artículos";
@@ -124,6 +142,7 @@
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnAdminCategorias;
     }
 }
 

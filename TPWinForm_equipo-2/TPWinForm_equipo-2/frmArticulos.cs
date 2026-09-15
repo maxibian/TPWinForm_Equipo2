@@ -76,5 +76,11 @@ namespace TPWinForm_equipo_2
                 throw ex;
             }
         }
+
+        private void btnAdminCategorias_Click(object sender, EventArgs e)
+        {
+            frmCategorias categorias = new frmCategorias();
+            categorias.ShowDialog();
+        }
     }
 }
