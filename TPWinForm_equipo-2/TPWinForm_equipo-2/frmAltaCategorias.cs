@@ -44,12 +44,12 @@ namespace TPWinForm_equipo_2
                 if(categoria.Id != 0)
                 {
                     catNegocio.modificar(categoria);
-                    MessageBox.Show("Agregado exitosamente");
+                    MessageBox.Show("Modificado exitosamente");
                 }
                 else
                 {
                     catNegocio.agregar(categoria);
-                    MessageBox.Show("Modificado exitosamente");
+                    MessageBox.Show("Agregado exitosamente");
                 }
                 
                 Close();
