@@ -48,5 +48,14 @@ namespace TPWinForm_equipo_2
             altaCategoria.ShowDialog();
             cargar();
         }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Categoria seleccionada;
+            seleccionada = (Categoria)dgvCategorias.CurrentRow.DataBoundItem;
+            frmAltaCategorias modificarCategoria = new frmAltaCategorias(seleccionada);
+            modificarCategoria.ShowDialog();
+            cargar();
+        }
     }
 }

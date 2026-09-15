@@ -70,7 +70,7 @@
             this.btnCancelarCategoria.UseVisualStyleBackColor = true;
             this.btnCancelarCategoria.Click += new System.EventHandler(this.btnCancelarCategoria_Click);
             // 
-            // frmAltaCategoria
+            // frmAltaCategorias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -79,8 +79,9 @@
             this.Controls.Add(this.btnAceptarCategoria);
             this.Controls.Add(this.txtNombreCategoria);
             this.Controls.Add(this.lblNombreCategoria);
-            this.Name = "frmAltaCategoria";
+            this.Name = "frmAltaCategorias";
             this.Text = "Nueva Categoria";
+            this.Load += new System.EventHandler(this.frmAltaCategorias_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

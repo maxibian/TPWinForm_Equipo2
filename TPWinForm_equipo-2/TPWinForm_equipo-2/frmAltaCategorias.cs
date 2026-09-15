@@ -14,9 +14,17 @@ namespace TPWinForm_equipo_2
 {
     public partial class frmAltaCategorias : Form
     {
+        private Categoria categoria = null;
         public frmAltaCategorias()
         {
             InitializeComponent();
+        }
+
+        public frmAltaCategorias(Categoria cat)
+        {
+            InitializeComponent();
+            categoria = cat;
+            Text = "Modificar Categoria";
         }
 
         private void btnCancelarCategoria_Click(object sender, EventArgs e)
@@ -26,15 +34,42 @@ namespace TPWinForm_equipo_2
 
         private void btnAceptarCategoria_Click(object sender, EventArgs e)
         {
-            Categoria cat = new Categoria();
             CategoriaNegocio catNegocio = new CategoriaNegocio();
             try
             {
-                cat.Descripcion = txtNombreCategoria.Text;
-                catNegocio.agregar(cat);
-                MessageBox.Show("Agregado exitosamente");
+                if (categoria == null) categoria = new Categoria();
+
+                categoria.Descripcion = txtNombreCategoria.Text;
+
+                if(categoria.Id != 0)
+                {
+                    catNegocio.modificar(categoria);
+                    MessageBox.Show("Agregado exitosamente");
+                }
+                else
+                {
+                    catNegocio.agregar(categoria);
+                    MessageBox.Show("Modificado exitosamente");
+                }
+                
                 Close();
             } 
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        private void frmAltaCategorias_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                if(categoria != null)
+                {
+                    txtNombreCategoria.Text = categoria.Descripcion;
+                }
+            }
             catch (Exception ex)
             {
 
