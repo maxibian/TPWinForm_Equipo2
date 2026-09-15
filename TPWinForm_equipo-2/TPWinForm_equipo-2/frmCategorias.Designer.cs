@@ -38,7 +38,9 @@
             // dgvCategorias
             // 
             this.dgvCategorias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCategorias.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvCategorias.Location = new System.Drawing.Point(12, 12);
+            this.dgvCategorias.MultiSelect = false;
             this.dgvCategorias.Name = "dgvCategorias";
             this.dgvCategorias.Size = new System.Drawing.Size(351, 265);
             this.dgvCategorias.TabIndex = 0;

@@ -64,7 +64,7 @@ namespace TPWinForm_equipo_2
             Categoria seleccionada = new Categoria();
             try
             {
-                DialogResult respuesta = MessageBox.Show("¿Estas seguro de que quere eliminarlo?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult respuesta = MessageBox.Show("¿Estas seguro de que queres eliminarlo?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if(respuesta == DialogResult.Yes)
                 {
                     seleccionada = (Categoria)dgvCategorias.CurrentRow.DataBoundItem;
