@@ -41,5 +41,12 @@ namespace TPWinForm_equipo_2
         {
             cargar();
         }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            frmAltaCategorias altaCategoria = new frmAltaCategorias();
+            altaCategoria.ShowDialog();
+            cargar();
+        }
     }
 }
