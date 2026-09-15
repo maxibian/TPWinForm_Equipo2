@@ -52,9 +52,9 @@
             // 
             // btnAceptarCategoria
             // 
-            this.btnAceptarCategoria.Location = new System.Drawing.Point(77, 108);
+            this.btnAceptarCategoria.Location = new System.Drawing.Point(27, 86);
             this.btnAceptarCategoria.Name = "btnAceptarCategoria";
-            this.btnAceptarCategoria.Size = new System.Drawing.Size(75, 23);
+            this.btnAceptarCategoria.Size = new System.Drawing.Size(100, 32);
             this.btnAceptarCategoria.TabIndex = 2;
             this.btnAceptarCategoria.Text = "Aceptar";
             this.btnAceptarCategoria.UseVisualStyleBackColor = true;
@@ -62,9 +62,9 @@
             // 
             // btnCancelarCategoria
             // 
-            this.btnCancelarCategoria.Location = new System.Drawing.Point(164, 108);
+            this.btnCancelarCategoria.Location = new System.Drawing.Point(139, 86);
             this.btnCancelarCategoria.Name = "btnCancelarCategoria";
-            this.btnCancelarCategoria.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelarCategoria.Size = new System.Drawing.Size(100, 32);
             this.btnCancelarCategoria.TabIndex = 3;
             this.btnCancelarCategoria.Text = "Cancelar";
             this.btnCancelarCategoria.UseVisualStyleBackColor = true;
@@ -74,12 +74,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(296, 153);
+            this.ClientSize = new System.Drawing.Size(266, 153);
             this.Controls.Add(this.btnCancelarCategoria);
             this.Controls.Add(this.btnAceptarCategoria);
             this.Controls.Add(this.txtNombreCategoria);
             this.Controls.Add(this.lblNombreCategoria);
+            this.MaximizeBox = false;
             this.Name = "frmAltaCategorias";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Nueva Categoria";
             this.Load += new System.EventHandler(this.frmAltaCategorias_Load);
             this.ResumeLayout(false);
