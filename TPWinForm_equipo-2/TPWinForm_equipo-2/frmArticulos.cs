@@ -88,5 +88,25 @@ namespace TPWinForm_equipo_2
             frmMarcas marcas = new frmMarcas();
             marcas.ShowDialog();
         }
+
+        private void btnFiltro_Click(object sender, EventArgs e)
+        {
+            List<Articulo> listaFiltro;
+            string filtro = txtBoxFiltro.Text;
+
+
+            if(filtro != "")
+            {  
+                listaFiltro = listaArticulos.FindAll(articulo => articulo.Nombre.ToUpper() == filtro.ToUpper());
+            }
+            else
+            {
+                listaFiltro = listaArticulos;
+            }
+
+            dgvListaArticulos.DataSource = null;
+            dgvListaArticulos.DataSource = listaFiltro;
+
+        }
     }
 }
