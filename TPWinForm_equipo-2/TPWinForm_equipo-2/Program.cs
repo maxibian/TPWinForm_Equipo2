@@ -16,7 +16,7 @@ namespace TPWinForm_equipo_2
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMarcas());
+            Application.Run(new frmArticulos());
         }
     }
 }
