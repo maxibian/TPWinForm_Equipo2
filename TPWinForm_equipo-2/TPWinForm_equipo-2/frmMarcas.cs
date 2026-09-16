@@ -38,7 +38,8 @@ namespace TPWinForm_equipo_2
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-
+            frmAltaMarca alta = new frmAltaMarca();
+            alta.ShowDialog();
         }
     }
 }
