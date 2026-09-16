@@ -34,6 +34,7 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnAdminCategorias = new System.Windows.Forms.Button();
+            this.btnAdministrarMarcas = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -45,7 +46,7 @@
             this.dgvListaArticulos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvListaArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListaArticulos.Location = new System.Drawing.Point(28, 38);
-            this.dgvListaArticulos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvListaArticulos.Margin = new System.Windows.Forms.Padding(2);
             this.dgvListaArticulos.MultiSelect = false;
             this.dgvListaArticulos.Name = "dgvListaArticulos";
             this.dgvListaArticulos.ReadOnly = true;
@@ -59,7 +60,7 @@
             // 
             this.btnAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnAgregar.Location = new System.Drawing.Point(434, 307);
-            this.btnAgregar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAgregar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(60, 24);
             this.btnAgregar.TabIndex = 1;
@@ -71,7 +72,7 @@
             // 
             this.btnModificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnModificar.Location = new System.Drawing.Point(499, 307);
-            this.btnModificar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnModificar.Margin = new System.Windows.Forms.Padding(2);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(60, 24);
             this.btnModificar.TabIndex = 2;
@@ -83,7 +84,7 @@
             // 
             this.btnEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnEliminar.Location = new System.Drawing.Point(563, 307);
-            this.btnEliminar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(2);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(60, 24);
             this.btnEliminar.TabIndex = 3;
@@ -94,7 +95,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Location = new System.Drawing.Point(650, 38);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(225, 244);
             this.pictureBox1.TabIndex = 4;
@@ -110,18 +111,29 @@
             this.btnAdminCategorias.UseVisualStyleBackColor = true;
             this.btnAdminCategorias.Click += new System.EventHandler(this.btnAdminCategorias_Click);
             // 
+            // btnAdministrarMarcas
+            // 
+            this.btnAdministrarMarcas.Location = new System.Drawing.Point(172, 307);
+            this.btnAdministrarMarcas.Name = "btnAdministrarMarcas";
+            this.btnAdministrarMarcas.Size = new System.Drawing.Size(126, 23);
+            this.btnAdministrarMarcas.TabIndex = 6;
+            this.btnAdministrarMarcas.Text = "Administrar Marcas";
+            this.btnAdministrarMarcas.UseVisualStyleBackColor = true;
+            this.btnAdministrarMarcas.Click += new System.EventHandler(this.btnAdministrarMarcas_Click);
+            // 
             // frmArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(900, 372);
+            this.Controls.Add(this.btnAdministrarMarcas);
             this.Controls.Add(this.btnAdminCategorias);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.dgvListaArticulos);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(916, 739);
             this.MinimumSize = new System.Drawing.Size(916, 411);
@@ -143,6 +155,7 @@
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnAdminCategorias;
+        private System.Windows.Forms.Button btnAdministrarMarcas;
     }
 }
 

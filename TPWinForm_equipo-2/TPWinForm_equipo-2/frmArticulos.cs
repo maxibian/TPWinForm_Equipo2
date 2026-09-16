@@ -82,5 +82,11 @@ namespace TPWinForm_equipo_2
             frmCategorias categorias = new frmCategorias();
             categorias.ShowDialog();
         }
+
+        private void btnAdministrarMarcas_Click(object sender, EventArgs e)
+        {
+            frmMarcas marcas = new frmMarcas();
+            marcas.ShowDialog();
+        }
     }
 }

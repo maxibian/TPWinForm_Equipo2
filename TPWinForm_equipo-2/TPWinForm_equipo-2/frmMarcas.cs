@@ -28,6 +28,8 @@ namespace TPWinForm_equipo_2
         {
             MarcaNegocio marcaNegocio = new MarcaNegocio();
             dgvMarca.DataSource = marcaNegocio.listarMarcas();
+            dgvMarca.Columns["Descripcion"].HeaderText = "MARCAS";
+            dgvMarca.Columns["Id"].Visible = false;
         }
         private void dgvMarca_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

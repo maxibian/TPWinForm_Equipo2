@@ -16,7 +16,7 @@ namespace negocio
             List<Marca> lista = new List<Marca>();
             try
             {
-                datos.setearConsulta("select Id, Descripcion from MARCAS");
+                datos.setearConsulta("select Id, Descripcion from MARCAS;");
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
