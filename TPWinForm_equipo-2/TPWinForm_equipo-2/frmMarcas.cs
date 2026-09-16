@@ -57,5 +57,19 @@ namespace TPWinForm_equipo_2
             modificar.ShowDialog();
             cargar();
         }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            MarcaNegocio marca = new MarcaNegocio();
+            Marca seleccionado;
+
+            DialogResult dialog = MessageBox.Show("¿Estas seguro de eliminar el registro?", "Eliminado",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+            if (dialog == DialogResult.Yes)
+            {
+                seleccionado = (Marca)dgvMarca.CurrentRow.DataBoundItem;
+                marca.eliminar(seleccionado);
+                cargar();
+            }
+        }
     }
 }
