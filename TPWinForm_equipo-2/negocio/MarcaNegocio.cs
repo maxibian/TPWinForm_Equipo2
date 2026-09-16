@@ -48,7 +48,7 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("INSERT INTO MARCAS(Descripcion)VALUES(@Descripción)");
+                datos.setearConsulta("INSERT INTO MARCAS(Descripcion)VALUES(@Descripcion)");
                 datos.setearParametro("@Descripcion", marcaNueva.Descripcion);
                 datos.ejecutarAccion();
             }
