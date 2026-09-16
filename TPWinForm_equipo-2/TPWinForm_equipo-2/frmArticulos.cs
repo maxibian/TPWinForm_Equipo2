@@ -91,13 +91,19 @@ namespace TPWinForm_equipo_2
 
         private void btnFiltro_Click(object sender, EventArgs e)
         {
+           
+
+        }
+
+        private void txtBoxFiltro_TextChanged(object sender, EventArgs e)
+        {
             List<Articulo> listaFiltro;
             string filtro = txtBoxFiltro.Text;
 
 
-            if(filtro != "")
-            {  
-                listaFiltro = listaArticulos.FindAll(articulo => articulo.Nombre.ToUpper() == filtro.ToUpper());
+            if (filtro != "")
+            {
+                listaFiltro = listaArticulos.FindAll(articulo => articulo.Nombre.ToUpper().Contains(filtro.ToUpper()));
             }
             else
             {
@@ -106,7 +112,6 @@ namespace TPWinForm_equipo_2
 
             dgvListaArticulos.DataSource = null;
             dgvListaArticulos.DataSource = listaFiltro;
-
         }
     }
 }

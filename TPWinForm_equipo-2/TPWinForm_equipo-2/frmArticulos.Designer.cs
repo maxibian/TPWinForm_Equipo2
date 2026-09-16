@@ -50,7 +50,7 @@
             this.dgvListaArticulos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvListaArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListaArticulos.Location = new System.Drawing.Point(28, 38);
-            this.dgvListaArticulos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvListaArticulos.Margin = new System.Windows.Forms.Padding(2);
             this.dgvListaArticulos.MultiSelect = false;
             this.dgvListaArticulos.Name = "dgvListaArticulos";
             this.dgvListaArticulos.ReadOnly = true;
@@ -64,7 +64,7 @@
             // 
             this.btnAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnAgregar.Location = new System.Drawing.Point(439, 306);
-            this.btnAgregar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAgregar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(60, 24);
             this.btnAgregar.TabIndex = 1;
@@ -76,7 +76,7 @@
             // 
             this.btnModificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnModificar.Location = new System.Drawing.Point(503, 306);
-            this.btnModificar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnModificar.Margin = new System.Windows.Forms.Padding(2);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(60, 24);
             this.btnModificar.TabIndex = 2;
@@ -88,7 +88,7 @@
             // 
             this.btnEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnEliminar.Location = new System.Drawing.Point(568, 306);
-            this.btnEliminar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(2);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(60, 24);
             this.btnEliminar.TabIndex = 3;
@@ -99,7 +99,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Location = new System.Drawing.Point(650, 38);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(225, 244);
             this.pictureBox1.TabIndex = 4;
@@ -140,6 +140,7 @@
             this.txtBoxFiltro.Name = "txtBoxFiltro";
             this.txtBoxFiltro.Size = new System.Drawing.Size(100, 20);
             this.txtBoxFiltro.TabIndex = 8;
+            this.txtBoxFiltro.TextChanged += new System.EventHandler(this.txtBoxFiltro_TextChanged);
             // 
             // btnFiltro
             // 
@@ -166,7 +167,7 @@
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.dgvListaArticulos);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(915, 738);
             this.MinimumSize = new System.Drawing.Size(915, 409);
