@@ -9,12 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using negocio;
 using dominio;
+using System.IO;
 
 namespace TPWinForm_equipo_2
 {
     public partial class frmArticulos : Form
     {
         private List<Articulo> listaArticulos;
+        private List<Imagen> imagenArticulos;
         public frmArticulos()
         {
             InitializeComponent();
@@ -67,13 +69,17 @@ namespace TPWinForm_equipo_2
         }
         private void cargar()
         {
+            ImagenNegocio imagenNegocio = new ImagenNegocio();
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
             try
             {
                 listaArticulos = articuloNegocio.listarArticulos();
+                imagenArticulos = imagenNegocio.listarImagenes();
                 dgvListaArticulos.DataSource = listaArticulos;
                 dgvListaArticulos.Columns["Id"].Visible = false;
-                //cargarImagen
+
+
+
             }
             catch (Exception ex)
             {
@@ -150,6 +156,30 @@ namespace TPWinForm_equipo_2
                 cboCriterio.Items.Add("Termina con");
                 cboCriterio.Items.Add("Contiene");
             }
+        }
+
+        private void dgvListaArticulos_SelectionChanged(object sender, EventArgs e)
+        {
+            Articulo seleccionado = (Articulo)dgvListaArticulos.CurrentRow.DataBoundItem;
+            List<Imagen> listaImagenesSeleccionado = new List<Imagen>();
+            try
+            {
+                foreach (Imagen image in imagenArticulos)
+                {
+                    if (seleccionado.Id == image.IdArticulo)
+                    {
+                        listaImagenesSeleccionado.Add(image);
+                    }        
+                }
+                pboArticulo.Load(listaImagenesSeleccionado[0].ImagenUrl);
+            }
+            catch (Exception)
+            {
+                string ruta = Path.Combine(Directory.GetParent(Application.StartupPath).Parent.Parent.FullName, "placeholder.jpg");
+                pboArticulo.Load(ruta);
+            }
+            
+
         }
     }
 }
