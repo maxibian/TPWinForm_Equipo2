@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using negocio;
 using dominio;
 using System.IO;
+using System.Net;
+using System.Threading;
 
 namespace TPWinForm_equipo_2
 {
@@ -17,6 +19,9 @@ namespace TPWinForm_equipo_2
     {
         private List<Articulo> listaArticulos;
         private List<Imagen> imagenArticulos;
+        private List<Imagen> listaImagenesSeleccionado = new List<Imagen>();
+        private int indiceImagen = 0;
+        private string ruta = Path.Combine(Directory.GetParent(Application.StartupPath).Parent.Parent.FullName, "placeholder.jpg");
         public frmArticulos()
         {
             InitializeComponent();
@@ -27,7 +32,7 @@ namespace TPWinForm_equipo_2
             cargar();
             cboCampo.Items.Add("Nombre");
             cboCampo.Items.Add("Marca");
-            cboCampo.Items.Add("Categoria");        
+            cboCampo.Items.Add("Categoria");
             cboCampo.Items.Add("Precio");
         }
 
@@ -43,7 +48,7 @@ namespace TPWinForm_equipo_2
             Articulo seleccionado;
             seleccionado = (Articulo)dgvListaArticulos.CurrentRow.DataBoundItem;
             frmAltaArticulo modificar = new frmAltaArticulo(seleccionado);
-            modificar.Text = "Modificar Artículo"; 
+            modificar.Text = "Modificar Artículo";
             modificar.ShowDialog();
             cargar();
         }
@@ -55,7 +60,7 @@ namespace TPWinForm_equipo_2
             try
             {
                 DialogResult respuesta = MessageBox.Show("¿Realmente quiere eliminar el Artículo?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if(respuesta == DialogResult.Yes)
+                if (respuesta == DialogResult.Yes)
                 {
                     seleccionado = (Articulo)dgvListaArticulos.CurrentRow.DataBoundItem;
                     articuloNegocio.eliminar(seleccionado.Id);
@@ -74,12 +79,9 @@ namespace TPWinForm_equipo_2
             try
             {
                 listaArticulos = articuloNegocio.listarArticulos();
-                imagenArticulos = imagenNegocio.listarImagenes();
+                imagenArticulos = imagenNegocio.listarImagenes();                
                 dgvListaArticulos.DataSource = listaArticulos;
                 dgvListaArticulos.Columns["Id"].Visible = false;
-
-
-
             }
             catch (Exception ex)
             {
@@ -87,6 +89,8 @@ namespace TPWinForm_equipo_2
             }
         }
 
+
+        
         private void btnAdminCategorias_Click(object sender, EventArgs e)
         {
             frmCategorias categorias = new frmCategorias();
@@ -115,7 +119,7 @@ namespace TPWinForm_equipo_2
 
                 throw ex;
             }
-            
+
         }
 
         private void txtBoxFiltro_TextChanged(object sender, EventArgs e)
@@ -140,7 +144,7 @@ namespace TPWinForm_equipo_2
         private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
         {
             string opcion = cboCampo.SelectedItem.ToString();
-            if(opcion == "Precio")
+            if (opcion == "Precio")
             {
                 cboCriterio.Items.Clear();
 
@@ -160,26 +164,75 @@ namespace TPWinForm_equipo_2
 
         private void dgvListaArticulos_SelectionChanged(object sender, EventArgs e)
         {
-            Articulo seleccionado = (Articulo)dgvListaArticulos.CurrentRow.DataBoundItem;
-            List<Imagen> listaImagenesSeleccionado = new List<Imagen>();
             try
             {
-                foreach (Imagen image in imagenArticulos)
+                if (dgvListaArticulos.CurrentRow == null)
+                    return;
+
+                if (dgvListaArticulos.CurrentRow.DataBoundItem == null)
+                    return;
+
+                Articulo seleccionado = (Articulo)dgvListaArticulos.CurrentRow.DataBoundItem;
+
+                indiceImagen = 0;
+                listaImagenesSeleccionado.Clear();
+                foreach (Imagen imagen in imagenArticulos)
                 {
-                    if (seleccionado.Id == image.IdArticulo)
+                    if (seleccionado.Id == imagen.IdArticulo)
                     {
-                        listaImagenesSeleccionado.Add(image);
-                    }        
+                        listaImagenesSeleccionado.Add(imagen);
+                    }
                 }
-                pboArticulo.Load(listaImagenesSeleccionado[0].ImagenUrl);
+                if (listaImagenesSeleccionado.Count > 0)
+                {
+                    pboArticulo.Load(listaImagenesSeleccionado[indiceImagen].ImagenUrl);
+                }
+                else
+                {
+                    pboArticulo.Load(ruta);
+                }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                string ruta = Path.Combine(Directory.GetParent(Application.StartupPath).Parent.Parent.FullName, "placeholder.jpg");
                 pboArticulo.Load(ruta);
             }
-            
+        }
 
+        private void btnAnterior_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (listaImagenesSeleccionado.Count == 0)
+                    return;
+
+                indiceImagen--;
+
+                if (indiceImagen < 0)
+                    indiceImagen = listaImagenesSeleccionado.Count - 1;
+
+                pboArticulo.Load(listaImagenesSeleccionado[indiceImagen].ImagenUrl);
+            }
+            catch (Exception ex)
+            {
+                pboArticulo.Load(ruta);
+            }
+        }
+
+        private void btnSiguiente_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (listaImagenesSeleccionado.Count == 0)
+                    return;
+                indiceImagen++;
+                if (indiceImagen >= listaImagenesSeleccionado.Count)
+                    indiceImagen = 0;
+                pboArticulo.Load(listaImagenesSeleccionado[indiceImagen].ImagenUrl);
+            }
+            catch (Exception ex)
+            {
+                pboArticulo.Load(ruta);
+            }
         }
     }
 }
