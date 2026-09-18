@@ -8,6 +8,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -38,18 +39,76 @@ namespace TPWinForm_equipo_2
         {
             Close();
         }
-
+        private void lblInvalido(bool value)
+            {
+            lblValorInvalido1.Visible = value;
+            lblValorInvalido2.Visible = value;
+        }
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            //lblValorInvalido1.Visible = false;
+            //lblValorInvalido2.Visible = false;
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
             try
             {
                 if (art == null)
                     art = new Articulo();
-                art.Nombre = txtNombre.Text;
-                art.Descripcion = txtDescripcion.Text;
-                art.Codigo = txtCodigo.Text;
-                art.Precio = decimal.Parse(txtPrecio.Text);
+                if (!string.IsNullOrWhiteSpace(txtNombre.Text) &&
+    txtNombre.Text.All(c => char.IsLetter(c) || c == ' '))
+                {
+                    art.Nombre = txtNombre.Text;
+                    lblNombreInvalido.Visible = false;
+                    //lblValorInvalido1.Visible = false;
+                    //lblValorInvalido2.Visible = false;
+                    lblInvalido(false);
+                    
+
+                }
+                else
+                {
+                    lblNombreInvalido.Visible = true;
+                    lblInvalido(true);
+                    return;
+                }
+                if (!string.IsNullOrWhiteSpace(txtDescripcion.Text) &&
+    txtDescripcion.Text.All(c => char.IsLetter(c) || c == ' '))
+                { 
+                    art.Descripcion = txtDescripcion.Text;
+                    lblDescripcionInvalida.Visible = false;
+                    lblInvalido(false);
+                }
+                else
+                {
+                    lblDescripcionInvalida.Visible = true;
+                    lblInvalido(true);
+                    return;
+                }
+                if (!string.IsNullOrWhiteSpace(txtPrecio.Text) &&
+    decimal.TryParse(txtPrecio.Text, out decimal precio))
+                {
+                    art.Precio = decimal.Parse(txtPrecio.Text);
+                    lblPrecioInvalido.Visible = false;
+                    lblInvalido(false);
+                }
+                else
+                {
+                    lblPrecioInvalido.Visible = true;
+                    lblInvalido(true);
+                    return;
+                }
+                if (!string.IsNullOrWhiteSpace(txtCodigo.Text) &&
+    txtCodigo.Text.All(char.IsLetterOrDigit))
+                {
+                    art.Codigo = txtCodigo.Text;
+                    lblCodigoInvalido.Visible = false;
+                    lblInvalido(false);
+                }
+                else
+                {
+                    lblCodigoInvalido.Visible = true;
+                    lblInvalido(true);
+                    return;
+                }
                 art.Marca = (Marca)cboMarca.SelectedItem;
                 art.Categoria = (Categoria)cboCategoria.SelectedItem;
                 if (art.Id != 0)
@@ -119,25 +178,20 @@ namespace TPWinForm_equipo_2
                         }
                         catch (Exception)
                         {
-
                             pboAltaArticulos.Load(ruta);
                         }
-
                     }
                 }
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
-
         }
 
         private void btnAgregarImagen_Click(object sender, EventArgs e)
         {
             frmAltaImagen frmAltaImagen = new frmAltaImagen(idArt);
-
             frmAltaImagen.ShowDialog();
         }
 
@@ -157,7 +211,6 @@ namespace TPWinForm_equipo_2
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -176,7 +229,6 @@ namespace TPWinForm_equipo_2
                     lblIndex.Text = (indice + 1).ToString();
                 }
                 pboAltaArticulos.Load(imagenesArticulo[indice].ImagenUrl);
-                //MessageBox.Show("id foto "+imagenesArticulo[indice].Id.ToString());
             }
             catch (Exception)
             {

@@ -48,6 +48,13 @@
             this.btnAgregarImagen = new System.Windows.Forms.Button();
             this.btnEliminarImagen = new System.Windows.Forms.Button();
             this.lblIndex = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblNombreInvalido = new System.Windows.Forms.Label();
+            this.lblDescripcionInvalida = new System.Windows.Forms.Label();
+            this.lblPrecioInvalido = new System.Windows.Forms.Label();
+            this.lblCodigoInvalido = new System.Windows.Forms.Label();
+            this.lblValorInvalido2 = new System.Windows.Forms.Label();
+            this.lblValorInvalido1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pboAltaArticulos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -184,7 +191,7 @@
             // 
             this.btnAnterior.Location = new System.Drawing.Point(374, 345);
             this.btnAnterior.Name = "btnAnterior";
-            this.btnAnterior.Size = new System.Drawing.Size(75, 23);
+            this.btnAnterior.Size = new System.Drawing.Size(47, 23);
             this.btnAnterior.TabIndex = 17;
             this.btnAnterior.Text = "<-";
             this.btnAnterior.UseVisualStyleBackColor = true;
@@ -192,9 +199,9 @@
             // 
             // btnSiguiente
             // 
-            this.btnSiguiente.Location = new System.Drawing.Point(455, 344);
+            this.btnSiguiente.Location = new System.Drawing.Point(427, 345);
             this.btnSiguiente.Name = "btnSiguiente";
-            this.btnSiguiente.Size = new System.Drawing.Size(75, 23);
+            this.btnSiguiente.Size = new System.Drawing.Size(47, 23);
             this.btnSiguiente.TabIndex = 18;
             this.btnSiguiente.Text = "->";
             this.btnSiguiente.UseVisualStyleBackColor = true;
@@ -223,16 +230,104 @@
             // lblIndex
             // 
             this.lblIndex.AutoSize = true;
-            this.lblIndex.Location = new System.Drawing.Point(537, 351);
+            this.lblIndex.Location = new System.Drawing.Point(555, 351);
             this.lblIndex.Name = "lblIndex";
             this.lblIndex.Size = new System.Drawing.Size(0, 16);
             this.lblIndex.TabIndex = 21;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(481, 351);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(69, 16);
+            this.label3.TabIndex = 22;
+            this.label3.Text = "Imágen n°:";
+            // 
+            // lblNombreInvalido
+            // 
+            this.lblNombreInvalido.AutoSize = true;
+            this.lblNombreInvalido.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreInvalido.ForeColor = System.Drawing.Color.Red;
+            this.lblNombreInvalido.Location = new System.Drawing.Point(333, 41);
+            this.lblNombreInvalido.Name = "lblNombreInvalido";
+            this.lblNombreInvalido.Size = new System.Drawing.Size(16, 20);
+            this.lblNombreInvalido.TabIndex = 23;
+            this.lblNombreInvalido.Text = "*";
+            this.lblNombreInvalido.Visible = false;
+            // 
+            // lblDescripcionInvalida
+            // 
+            this.lblDescripcionInvalida.AutoSize = true;
+            this.lblDescripcionInvalida.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.lblDescripcionInvalida.ForeColor = System.Drawing.Color.Red;
+            this.lblDescripcionInvalida.Location = new System.Drawing.Point(333, 69);
+            this.lblDescripcionInvalida.Name = "lblDescripcionInvalida";
+            this.lblDescripcionInvalida.Size = new System.Drawing.Size(16, 20);
+            this.lblDescripcionInvalida.TabIndex = 24;
+            this.lblDescripcionInvalida.Text = "*";
+            this.lblDescripcionInvalida.Visible = false;
+            // 
+            // lblPrecioInvalido
+            // 
+            this.lblPrecioInvalido.AutoSize = true;
+            this.lblPrecioInvalido.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.lblPrecioInvalido.ForeColor = System.Drawing.Color.Red;
+            this.lblPrecioInvalido.Location = new System.Drawing.Point(333, 97);
+            this.lblPrecioInvalido.Name = "lblPrecioInvalido";
+            this.lblPrecioInvalido.Size = new System.Drawing.Size(16, 20);
+            this.lblPrecioInvalido.TabIndex = 25;
+            this.lblPrecioInvalido.Text = "*";
+            this.lblPrecioInvalido.Visible = false;
+            // 
+            // lblCodigoInvalido
+            // 
+            this.lblCodigoInvalido.AutoSize = true;
+            this.lblCodigoInvalido.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.lblCodigoInvalido.ForeColor = System.Drawing.Color.Red;
+            this.lblCodigoInvalido.Location = new System.Drawing.Point(333, 125);
+            this.lblCodigoInvalido.Name = "lblCodigoInvalido";
+            this.lblCodigoInvalido.Size = new System.Drawing.Size(16, 20);
+            this.lblCodigoInvalido.TabIndex = 26;
+            this.lblCodigoInvalido.Text = "*";
+            this.lblCodigoInvalido.Visible = false;
+            // 
+            // lblValorInvalido2
+            // 
+            this.lblValorInvalido2.AutoSize = true;
+            this.lblValorInvalido2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblValorInvalido2.ForeColor = System.Drawing.Color.Red;
+            this.lblValorInvalido2.Location = new System.Drawing.Point(224, 282);
+            this.lblValorInvalido2.Name = "lblValorInvalido2";
+            this.lblValorInvalido2.Size = new System.Drawing.Size(103, 16);
+            this.lblValorInvalido2.TabIndex = 27;
+            this.lblValorInvalido2.Text = "Valor Inválido";
+            this.lblValorInvalido2.Visible = false;
+            // 
+            // lblValorInvalido1
+            // 
+            this.lblValorInvalido1.AutoSize = true;
+            this.lblValorInvalido1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.lblValorInvalido1.ForeColor = System.Drawing.Color.Red;
+            this.lblValorInvalido1.Location = new System.Drawing.Point(211, 278);
+            this.lblValorInvalido1.Name = "lblValorInvalido1";
+            this.lblValorInvalido1.Size = new System.Drawing.Size(16, 20);
+            this.lblValorInvalido1.TabIndex = 28;
+            this.lblValorInvalido1.Text = "*";
+            this.lblValorInvalido1.Visible = false;
             // 
             // frmAltaArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(722, 398);
+            this.Controls.Add(this.lblValorInvalido1);
+            this.Controls.Add(this.lblValorInvalido2);
+            this.Controls.Add(this.lblCodigoInvalido);
+            this.Controls.Add(this.lblPrecioInvalido);
+            this.Controls.Add(this.lblDescripcionInvalida);
+            this.Controls.Add(this.lblNombreInvalido);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.lblIndex);
             this.Controls.Add(this.btnEliminarImagen);
             this.Controls.Add(this.btnAgregarImagen);
@@ -288,5 +383,12 @@
         private System.Windows.Forms.Button btnAgregarImagen;
         private System.Windows.Forms.Button btnEliminarImagen;
         private System.Windows.Forms.Label lblIndex;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblNombreInvalido;
+        private System.Windows.Forms.Label lblDescripcionInvalida;
+        private System.Windows.Forms.Label lblPrecioInvalido;
+        private System.Windows.Forms.Label lblCodigoInvalido;
+        private System.Windows.Forms.Label lblValorInvalido2;
+        private System.Windows.Forms.Label lblValorInvalido1;
     }
 }

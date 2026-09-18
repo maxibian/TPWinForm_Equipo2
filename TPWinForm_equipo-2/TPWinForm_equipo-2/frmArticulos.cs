@@ -89,8 +89,6 @@ namespace TPWinForm_equipo_2
             }
         }
 
-
-
         private void btnAdminCategorias_Click(object sender, EventArgs e)
         {
             frmCategorias categorias = new frmCategorias();
@@ -168,12 +166,9 @@ namespace TPWinForm_equipo_2
             {
                 if (dgvListaArticulos.CurrentRow == null)
                     return;
-
                 if (dgvListaArticulos.CurrentRow.DataBoundItem == null)
                     return;
-
                 Articulo seleccionado = (Articulo)dgvListaArticulos.CurrentRow.DataBoundItem;
-
                 indiceImagen = 0;
                 listaImagenesSeleccionado.Clear();
                 foreach (Imagen imagen in imagenArticulos)
@@ -187,13 +182,11 @@ namespace TPWinForm_equipo_2
                 {
                     btnSiguiente.Enabled = false;
                     btnAnterior.Enabled = false;
-                    //MessageBox.Show(""+listaImagenesSeleccionado.Count);
                 }
                 else if (listaImagenesSeleccionado.Count > 1)
                 {
                     btnSiguiente.Enabled = true;
                     btnAnterior.Enabled = true;
-                    //MessageBox.Show("" + listaImagenesSeleccionado.Count);
                 }
                 if (listaImagenesSeleccionado.Count == 0)
                     pboArticulo.Load(ruta);
@@ -205,7 +198,6 @@ namespace TPWinForm_equipo_2
                     }
                     catch (Exception)
                     {
-
                         pboArticulo.Load(ruta);
                     }
                 }
@@ -213,7 +205,6 @@ namespace TPWinForm_equipo_2
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
-                //pboArticulo.Load(ruta);
             }
         }
 
@@ -223,9 +214,7 @@ namespace TPWinForm_equipo_2
             {
                 if (listaImagenesSeleccionado.Count == 0)
                     return;
-
                 indiceImagen--;
-
                 if (indiceImagen < 0)
                     indiceImagen = listaImagenesSeleccionado.Count - 1;
 
@@ -236,7 +225,6 @@ namespace TPWinForm_equipo_2
                 pboArticulo.Load(ruta);
             }
         }
-
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
             try
