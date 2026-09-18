@@ -79,7 +79,7 @@ namespace TPWinForm_equipo_2
             try
             {
                 listaArticulos = articuloNegocio.listarArticulos();
-                imagenArticulos = imagenNegocio.listarImagenes();                
+                imagenArticulos = imagenNegocio.listarImagenes();
                 dgvListaArticulos.DataSource = listaArticulos;
                 dgvListaArticulos.Columns["Id"].Visible = false;
             }
@@ -90,7 +90,7 @@ namespace TPWinForm_equipo_2
         }
 
 
-        
+
         private void btnAdminCategorias_Click(object sender, EventArgs e)
         {
             frmCategorias categorias = new frmCategorias();
@@ -183,18 +183,36 @@ namespace TPWinForm_equipo_2
                         listaImagenesSeleccionado.Add(imagen);
                     }
                 }
+                if (listaImagenesSeleccionado.Count <= 1)
+                {
+                    btnSiguiente.Enabled = false;
+                    btnAnterior.Enabled = false;
+                    //MessageBox.Show(""+listaImagenesSeleccionado.Count);
+                }
+                else if (listaImagenesSeleccionado.Count > 1)
+                {
+                    btnSiguiente.Enabled = true;
+                    btnAnterior.Enabled = true;
+                    //MessageBox.Show("" + listaImagenesSeleccionado.Count);
+                }
+
                 if (listaImagenesSeleccionado.Count > 0)
                 {
-                    pboArticulo.Load(listaImagenesSeleccionado[indiceImagen].ImagenUrl);
-                }
-                else
-                {
-                    pboArticulo.Load(ruta);
+                    try
+                    {
+                        pboArticulo.Load(listaImagenesSeleccionado[0].ImagenUrl);
+                    }
+                    catch (Exception)
+                    {
+
+                        pboArticulo.Load(ruta);
+                    }
                 }
             }
             catch (Exception ex)
             {
-                pboArticulo.Load(ruta);
+                MessageBox.Show(ex.ToString());
+                //pboArticulo.Load(ruta);
             }
         }
 
@@ -212,7 +230,7 @@ namespace TPWinForm_equipo_2
 
                 pboArticulo.Load(listaImagenesSeleccionado[indiceImagen].ImagenUrl);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 pboArticulo.Load(ruta);
             }
@@ -229,7 +247,7 @@ namespace TPWinForm_equipo_2
                     indiceImagen = 0;
                 pboArticulo.Load(listaImagenesSeleccionado[indiceImagen].ImagenUrl);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 pboArticulo.Load(ruta);
             }

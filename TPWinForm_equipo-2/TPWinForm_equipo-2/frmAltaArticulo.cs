@@ -16,6 +16,11 @@ namespace TPWinForm_equipo_2
     public partial class frmAltaArticulo : Form
     {
         private Articulo art = null;
+        private ImagenNegocio imagenNegocio = new ImagenNegocio();
+        private List<Imagen> listaImagenes = new List<Imagen>();
+        private List<Imagen> imagenesArticulo = new List<Imagen>();
+        int indice;
+
         private string ruta = Path.Combine(Directory.GetParent(Application.StartupPath).Parent.Parent.FullName, "placeholder.jpg");
         public frmAltaArticulo()
         {
@@ -43,7 +48,6 @@ namespace TPWinForm_equipo_2
                 art.Nombre = txtNombre.Text;
                 art.Descripcion = txtDescripcion.Text;
                 art.Codigo = txtCodigo.Text;
-                //art.Imagen = txtImagen.Text;
                 art.Precio = decimal.Parse(txtPrecio.Text);
                 art.Marca = (Marca)cboMarca.SelectedItem;
                 art.Categoria = (Categoria)cboCategoria.SelectedItem;
@@ -67,10 +71,15 @@ namespace TPWinForm_equipo_2
 
         private void frmAltaArticulo_Load(object sender, EventArgs e)
         {
+
             MarcaNegocio marcaNegocio = new MarcaNegocio();
             CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
             try
             {
+                btnSiguiente.Enabled = false;
+                btnAnterior.Enabled = false;
+                indice = 0;
+                lblIndex.Text = (indice + 1).ToString();
                 cboMarca.DataSource = marcaNegocio.listarMarcas();
                 cboMarca.ValueMember = "Id";
                 cboMarca.DisplayMember = "Descripcion";
@@ -80,18 +89,15 @@ namespace TPWinForm_equipo_2
                 if (art != null)
                 {
                     int id = art.Id;
-                    ImagenNegocio imagenNegocio = new ImagenNegocio();
-                    List<Imagen> listaImagenes = new List<Imagen>();
-                    List<Imagen> imagenesArticulo = new List<Imagen>();
                     listaImagenes = imagenNegocio.listarImagenes();
+                    imagenesArticulo.Clear();
                     foreach (Imagen img in listaImagenes)
                     {
-                        if(id == img.Id)
+                        if (id == img.IdArticulo)
                         {
                             imagenesArticulo.Add(img);
                         }
                     }
-
                     txtNombre.Text = art.Nombre.ToString();
                     txtDescripcion.Text = art.Descripcion.ToString();
                     txtPrecio.Text = art.Precio.ToString();
@@ -99,11 +105,23 @@ namespace TPWinForm_equipo_2
                     cboMarca.SelectedValue = art.Marca.Id;
                     cboCategoria.SelectedValue = art.Categoria.Id;
 
+
                     //Imagen
                     if (imagenesArticulo.Count > 0)
-                        pboAltaArticulos.Load(imagenesArticulo[0].ImagenUrl);
-                    else
-                        pboAltaArticulos.Load(ruta);
+                    {
+                        try
+                        {
+                            pboAltaArticulos.Load(imagenesArticulo[0].ImagenUrl);
+                            btnSiguiente.Enabled = true;
+                            btnAnterior.Enabled = true;
+                        }
+                        catch (Exception)
+                        {
+
+                            pboAltaArticulos.Load(ruta);
+                        }
+
+                    }
                 }
 
             }
@@ -123,6 +141,48 @@ namespace TPWinForm_equipo_2
         private void btnEliminarImagen_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnSiguiente_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (imagenesArticulo.Count == 0)
+                    return;
+                indice++;
+                lblIndex.Text = (indice + 1).ToString();
+                if (indice >= imagenesArticulo.Count)
+                {
+                    indice = 0;
+                    lblIndex.Text = (indice + 1).ToString();
+                }
+                pboAltaArticulos.Load(imagenesArticulo[indice].ImagenUrl);
+            }
+            catch (Exception)
+            {
+                pboAltaArticulos.Load(ruta);
+            }
+        }
+
+        private void btnAnterior_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (imagenesArticulo.Count == 0)
+                    return;
+                indice--;
+                if (indice < 0)
+                {
+                    indice = imagenesArticulo.Count - 1;
+                    lblIndex.Text = (indice).ToString();
+                }
+                lblIndex.Text = (indice + 1).ToString();
+                pboAltaArticulos.Load(imagenesArticulo[indice].ImagenUrl);
+            }
+            catch (Exception)
+            {
+                pboAltaArticulos.Load(ruta);
+            }
         }
     }
 }
