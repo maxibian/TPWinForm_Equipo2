@@ -1,20 +1,22 @@
-﻿using System;
+﻿using dominio;
+using negocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using negocio;
-using dominio;
 
 namespace TPWinForm_equipo_2
 {
     public partial class frmAltaArticulo : Form
     {
         private Articulo art = null;
+        private string ruta = Path.Combine(Directory.GetParent(Application.StartupPath).Parent.Parent.FullName, "placeholder.jpg");
         public frmAltaArticulo()
         {
             InitializeComponent();
@@ -77,6 +79,19 @@ namespace TPWinForm_equipo_2
                 cboCategoria.DisplayMember = "Descripcion";
                 if (art != null)
                 {
+                    int id = art.Id;
+                    ImagenNegocio imagenNegocio = new ImagenNegocio();
+                    List<Imagen> listaImagenes = new List<Imagen>();
+                    List<Imagen> imagenesArticulo = new List<Imagen>();
+                    listaImagenes = imagenNegocio.listarImagenes();
+                    foreach (Imagen img in listaImagenes)
+                    {
+                        if(id == img.Id)
+                        {
+                            imagenesArticulo.Add(img);
+                        }
+                    }
+
                     txtNombre.Text = art.Nombre.ToString();
                     txtDescripcion.Text = art.Descripcion.ToString();
                     txtPrecio.Text = art.Precio.ToString();
@@ -85,6 +100,10 @@ namespace TPWinForm_equipo_2
                     cboCategoria.SelectedValue = art.Categoria.Id;
 
                     //Imagen
+                    if (imagenesArticulo.Count > 0)
+                        pboAltaArticulos.Load(imagenesArticulo[0].ImagenUrl);
+                    else
+                        pboAltaArticulos.Load(ruta);
                 }
 
             }
@@ -92,6 +111,17 @@ namespace TPWinForm_equipo_2
             {
                 MessageBox.Show(ex.ToString());
             }
+
+        }
+
+        private void btnAgregarImagen_Click(object sender, EventArgs e)
+        {
+            frmAltaImagen frmAltaImagen = new frmAltaImagen();
+            frmAltaImagen.ShowDialog();
+        }
+
+        private void btnEliminarImagen_Click(object sender, EventArgs e)
+        {
 
         }
     }
