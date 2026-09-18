@@ -1,4 +1,6 @@
-﻿using System;
+﻿using dominio;
+using negocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,12 @@ namespace TPWinForm_equipo_2
 {
     public partial class frmAltaImagen : Form
     {
-        public frmAltaImagen()
+        private int idArt;
+        public frmAltaImagen(int id)
         {
+            
             InitializeComponent();
+            idArt = id;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -24,7 +29,12 @@ namespace TPWinForm_equipo_2
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-
+            Imagen imagen = new Imagen();
+            ImagenNegocio imagenNegocio = new ImagenNegocio();
+            imagen.ImagenUrl = txtImagen.Text.ToString();
+            imagen.IdArticulo = idArt;
+            imagenNegocio.agregar(imagen);
+            Close();
         }
     }
 }

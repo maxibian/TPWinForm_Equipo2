@@ -20,6 +20,7 @@ namespace TPWinForm_equipo_2
         private List<Imagen> listaImagenes = new List<Imagen>();
         private List<Imagen> imagenesArticulo = new List<Imagen>();
         int indice;
+        int idArt;
 
         private string ruta = Path.Combine(Directory.GetParent(Application.StartupPath).Parent.Parent.FullName, "placeholder.jpg");
         public frmAltaArticulo()
@@ -88,12 +89,12 @@ namespace TPWinForm_equipo_2
                 cboCategoria.DisplayMember = "Descripcion";
                 if (art != null)
                 {
-                    int id = art.Id;
+                    idArt = art.Id;
                     listaImagenes = imagenNegocio.listarImagenes();
                     imagenesArticulo.Clear();
                     foreach (Imagen img in listaImagenes)
                     {
-                        if (id == img.IdArticulo)
+                        if (idArt == img.IdArticulo)
                         {
                             imagenesArticulo.Add(img);
                         }
@@ -135,7 +136,8 @@ namespace TPWinForm_equipo_2
 
         private void btnAgregarImagen_Click(object sender, EventArgs e)
         {
-            frmAltaImagen frmAltaImagen = new frmAltaImagen();
+            frmAltaImagen frmAltaImagen = new frmAltaImagen(idArt);
+
             frmAltaImagen.ShowDialog();
         }
 
