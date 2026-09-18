@@ -102,7 +102,7 @@ namespace negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("DELETE FROM ARTICULOS Where Id = @id");
+                datos.setearConsulta("DELETE FROM ARTICULOS WHERE Id = @id");
                 datos.setearParametro("@id", id);
                 datos.ejecutarAccion();
             }
@@ -197,18 +197,16 @@ namespace negocio
                     aux.Categoria = new Categoria();
                     aux.Categoria.Id = (int)datos.Lector["IdCategoria"];
                     aux.Categoria.Descripcion = (string)datos.Lector["Categoria"];
-                    //aux.Imagen 
                     aux.Precio = (decimal)datos.Lector["Precio"];
                     lista.Add(aux);
                 }
-
                 return lista;
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
+            finally { datos.cerrarConexion(); }
         }
     
     }
