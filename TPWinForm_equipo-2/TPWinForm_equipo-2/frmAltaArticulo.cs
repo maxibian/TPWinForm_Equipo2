@@ -105,7 +105,8 @@ namespace TPWinForm_equipo_2
                     cboMarca.SelectedValue = art.Marca.Id;
                     cboCategoria.SelectedValue = art.Categoria.Id;
 
-
+                    if (imagenesArticulo.Count == 0)
+                        pboAltaArticulos.Load(ruta);
                     //Imagen
                     if (imagenesArticulo.Count > 0)
                     {
@@ -140,7 +141,23 @@ namespace TPWinForm_equipo_2
 
         private void btnEliminarImagen_Click(object sender, EventArgs e)
         {
+            ImagenNegocio imagenNegocio = new ImagenNegocio();
+            Imagen seleccionado;
+            try
+            {
+                DialogResult respuesta = MessageBox.Show("¿Realmente quiere eliminar el Artículo?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (respuesta == DialogResult.Yes)
+                {
+                    seleccionado = (Imagen)imagenesArticulo[indice];
+                    imagenNegocio.eliminar(seleccionado.Id);
+                    //cargar();
+                }
+            }
+            catch (Exception)
+            {
 
+                throw;
+            }
         }
 
         private void btnSiguiente_Click(object sender, EventArgs e)
@@ -157,6 +174,7 @@ namespace TPWinForm_equipo_2
                     lblIndex.Text = (indice + 1).ToString();
                 }
                 pboAltaArticulos.Load(imagenesArticulo[indice].ImagenUrl);
+                //MessageBox.Show("id foto "+imagenesArticulo[indice].Id.ToString());
             }
             catch (Exception)
             {

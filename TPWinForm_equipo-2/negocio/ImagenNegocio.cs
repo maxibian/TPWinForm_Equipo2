@@ -83,6 +83,7 @@ namespace negocio
             {
                 datos.setearConsulta("DELETE FROM IMAGENES WHERE Id = @id");
                 datos.setearParametro("@id", id);
+                datos.ejecutarAccion();
             }
             catch (Exception ex)
             {

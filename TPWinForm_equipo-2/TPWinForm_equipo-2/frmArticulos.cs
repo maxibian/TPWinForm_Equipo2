@@ -195,7 +195,8 @@ namespace TPWinForm_equipo_2
                     btnAnterior.Enabled = true;
                     //MessageBox.Show("" + listaImagenesSeleccionado.Count);
                 }
-
+                if (listaImagenesSeleccionado.Count == 0)
+                    pboArticulo.Load(ruta);
                 if (listaImagenesSeleccionado.Count > 0)
                 {
                     try
