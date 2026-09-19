@@ -19,7 +19,6 @@ namespace TPWinForm_equipo_2
         {
             InitializeComponent();
         }
-
         private void cargar()
         {
             MarcaNegocio marcaNegocio = new MarcaNegocio();
@@ -63,12 +62,16 @@ namespace TPWinForm_equipo_2
             MarcaNegocio marca = new MarcaNegocio();
             Marca seleccionado;
 
-            DialogResult dialog = MessageBox.Show("¿Estas seguro de eliminar el registro?", "Eliminado",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
-            if (dialog == DialogResult.Yes)
+            seleccionado = (Marca)dgvMarca.CurrentRow.DataBoundItem;
+            int validacion = marca.isExist(seleccionado);
+            if(validacion == 0)
             {
-                seleccionado = (Marca)dgvMarca.CurrentRow.DataBoundItem;
                 marca.eliminar(seleccionado);
                 cargar();
+            }
+            else
+            {
+                MessageBox.Show("No se puede eliminar este registro porque tiene artículos asociados.", "Error");
             }
         }
     }

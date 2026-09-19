@@ -111,6 +111,12 @@ namespace negocio
             }
 
         }
+        public int isExist(Marca consulta)
+        {
+            datos.setearConsulta("SELECT 1 FROM ARTICULOS WHERE IdMarca = @Id");
+            datos.setearParametro("@Id", consulta.Id);
+            return datos.ejecutarConsulta();
+        }
 
     }
 }

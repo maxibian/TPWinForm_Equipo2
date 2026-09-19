@@ -134,6 +134,7 @@ namespace TPWinForm_equipo_2
             ArticuloNegocio negocio = new ArticuloNegocio();
             try
             {
+                lblInteraccion.Text = null;
                 if (validar())
                 {
                     string campo = cboCampo.SelectedItem.ToString();
@@ -143,7 +144,6 @@ namespace TPWinForm_equipo_2
                         lblInteraccion.Text = "Filtro obligatorio";
                         return;
                     }
-                    lblInteraccion.Text = null;
                     dgvListaArticulos.DataSource = negocio.filtrar(campo, criterio, filtro);
                 }
             }
