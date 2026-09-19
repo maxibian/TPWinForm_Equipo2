@@ -39,7 +39,15 @@ namespace TPWinForm_equipo_2
             {
                 if (categoria == null) categoria = new Categoria();
 
-                categoria.Descripcion = txtNombreCategoria.Text;
+                string texto = txtNombreCategoria.Text;
+
+                if (string.IsNullOrWhiteSpace(texto))
+                {
+                    MessageBox.Show("Debe ingresar una categoria");
+                    return;
+                }
+
+                categoria.Descripcion = texto.Trim();
 
                 if(categoria.Id != 0)
                 {
