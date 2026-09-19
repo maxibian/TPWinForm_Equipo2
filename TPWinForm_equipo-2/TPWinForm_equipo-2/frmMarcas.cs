@@ -26,7 +26,7 @@ namespace TPWinForm_equipo_2
             {
                 listaMarca = marcaNegocio.listarMarcas();
                 dgvMarca.DataSource = listaMarca;
-                dgvMarca.Columns["Descripcion"].HeaderText = "MARCAS";
+                //dgvMarca.Columns["Descripcion"].HeaderText = "MARCAS";
                 dgvMarca.Columns["Id"].Visible = false;
 
             }

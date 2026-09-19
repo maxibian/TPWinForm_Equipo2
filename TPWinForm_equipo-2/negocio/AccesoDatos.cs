@@ -25,7 +25,8 @@ namespace negocio
 
         public AccesoDatos()
         {
-            conexion = new SqlConnection(/*"server=localhost,1433; database=CATALOGO_P3_DB; user=sa; password=BaseDatos#2"*/);
+            //conexion = new SqlConnection("server=localhost,1433; database=CATALOGO_P3_DB; user=sa; password=BaseDatos#2");
+            //conexion = new SqlConnection();
             comando = new SqlCommand();
         }
         public void setearConsulta(string consulta)
