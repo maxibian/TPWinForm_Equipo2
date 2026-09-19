@@ -26,7 +26,33 @@ namespace TPWinForm_equipo_2
         {
             InitializeComponent();
         }
+        private bool validar()
+        {
+            if(cboCampo.SelectedIndex < 0) 
+            {
+                MessageBox.Show("Seleccione un campo para continuar...");
+                return false;
+            }
+            if(cboCriterio.SelectedIndex < 0)
+            {
+                MessageBox.Show("Seleccione un criterio para continuar...");
+                return false;
+            }
 
+            if(cboCampo.SelectedItem.ToString() == "Precio")
+            {
+                foreach(char caracter in cboCampo.SelectedItem.ToString())
+                {
+                    if(!(char.IsNumber(caracter))) {
+                       
+                        MessageBox.Show("Ingrese el precio por el que quiera filtrar para continuar...", "Error");
+                         return false;
+                    }
+                }
+            }
+
+            return true;
+        }
         private void frmArticulos_Load(object sender, EventArgs e)
         {
             cargar();
@@ -106,13 +132,18 @@ namespace TPWinForm_equipo_2
             ArticuloNegocio negocio = new ArticuloNegocio();
             try
             {
-                string campo = cboCampo.SelectedItem.ToString();
-                string criterio = cboCriterio.SelectedItem.ToString();
-                string filtro = txtFiltroAvanzado.Text;
-                dgvListaArticulos.DataSource = negocio.filtrar(campo, criterio, filtro);
+                if (validar())
+                {
+                    string campo = cboCampo.SelectedItem.ToString();
+                    string criterio = cboCriterio.SelectedItem.ToString();
+                    string filtro = txtFiltroAvanzado.Text;
+                    dgvListaArticulos.DataSource = negocio.filtrar(campo, criterio, filtro);
+                }
             }
-            catch (Exception ex)
-            {
+
+            catch (Exception ex) {
+
+
                 throw ex;
             }
         }
@@ -244,5 +275,6 @@ namespace TPWinForm_equipo_2
             frmAltaArticulo frmDetalle = new frmAltaArticulo(seleccionado,true);
             frmDetalle.ShowDialog();
         }
+
     }
 }
