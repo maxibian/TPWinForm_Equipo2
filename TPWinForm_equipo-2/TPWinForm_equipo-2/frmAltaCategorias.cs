@@ -43,7 +43,13 @@ namespace TPWinForm_equipo_2
 
                 if (string.IsNullOrWhiteSpace(texto))
                 {
-                    MessageBox.Show("Debe ingresar una categoria");
+                    MessageBox.Show("Debe ingresar una categoria.");
+                    return;
+                }
+
+                if(texto.Trim().Length > 50)
+                {
+                    MessageBox.Show("No se pueden cargar mas de 50 caracteres.");
                     return;
                 }
 
