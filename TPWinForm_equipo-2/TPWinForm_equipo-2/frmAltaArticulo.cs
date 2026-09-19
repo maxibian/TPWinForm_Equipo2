@@ -60,6 +60,7 @@ namespace TPWinForm_equipo_2
         }
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
             try
             {
@@ -70,11 +71,7 @@ namespace TPWinForm_equipo_2
                 {
                     art.Nombre = txtNombre.Text;
                     lblNombreInvalido.Visible = false;
-                    //lblValorInvalido1.Visible = false;
-                    //lblValorInvalido2.Visible = false;
                     lblInvalido(false);
-                    
-
                 }
                 else
                 {
@@ -131,8 +128,14 @@ namespace TPWinForm_equipo_2
                 else
                 {
                     int idNuevo = articuloNegocio.agregar(art);
-
-
+                    MessageBox.Show("IdNuevo " + idNuevo);
+                    foreach (Imagen imagen in imagenesArticulo)
+                    {
+                        MessageBox.Show("antes " + idNuevo);
+                        imagen.IdArticulo = idNuevo;
+                        imagenNegocio.agregar(imagen);
+                        MessageBox.Show("despues " + idNuevo);
+                    }
 
 
 
@@ -211,6 +214,7 @@ namespace TPWinForm_equipo_2
         {
             frmAltaImagen frmAltaImagen = new frmAltaImagen(idArt);
             frmAltaImagen.ShowDialog();
+            imagenesArticulo.Add(frmAltaImagen.imagenCreada);
         }
 
         private void btnEliminarImagen_Click(object sender, EventArgs e)
