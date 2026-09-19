@@ -107,5 +107,37 @@ namespace negocio
             }
         }
 
+        public bool estaEnUso(int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("SELECT COUNT(*) AS Cantidad FROM ARTICULOS WHERE IdCategoria = @id");
+
+                datos.setearParametro("@id", id);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    int cantidad = (int)datos.Lector["Cantidad"];
+
+                    return cantidad > 0;
+                }
+
+                return false;
+     
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
     }
 }
