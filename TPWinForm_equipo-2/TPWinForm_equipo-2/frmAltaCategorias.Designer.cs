@@ -46,6 +46,7 @@
             // txtNombreCategoria
             // 
             this.txtNombreCategoria.Location = new System.Drawing.Point(77, 28);
+            this.txtNombreCategoria.MaxLength = 50;
             this.txtNombreCategoria.Name = "txtNombreCategoria";
             this.txtNombreCategoria.Size = new System.Drawing.Size(162, 20);
             this.txtNombreCategoria.TabIndex = 1;

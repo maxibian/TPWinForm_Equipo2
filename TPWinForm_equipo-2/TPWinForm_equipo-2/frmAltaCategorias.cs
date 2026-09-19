@@ -39,7 +39,21 @@ namespace TPWinForm_equipo_2
             {
                 if (categoria == null) categoria = new Categoria();
 
-                categoria.Descripcion = txtNombreCategoria.Text;
+                string texto = txtNombreCategoria.Text;
+
+                if (string.IsNullOrWhiteSpace(texto))
+                {
+                    MessageBox.Show("Debe ingresar una categoria.");
+                    return;
+                }
+
+                if(texto.Trim().Length > 50)
+                {
+                    MessageBox.Show("No se pueden cargar mas de 50 caracteres.");
+                    return;
+                }
+
+                categoria.Descripcion = texto.Trim();
 
                 if(categoria.Id != 0)
                 {
