@@ -41,7 +41,7 @@ namespace TPWinForm_equipo_2
 
             if(cboCampo.SelectedItem.ToString() == "Precio")
             {
-                foreach(char caracter in cboCampo.SelectedItem.ToString())
+                foreach(char caracter in txtFiltroAvanzado.Text)
                 {
                     if(!(char.IsNumber(caracter))) {
                        
@@ -50,6 +50,8 @@ namespace TPWinForm_equipo_2
                     }
                 }
             }
+
+        
 
             return true;
         }
@@ -137,6 +139,11 @@ namespace TPWinForm_equipo_2
                     string campo = cboCampo.SelectedItem.ToString();
                     string criterio = cboCriterio.SelectedItem.ToString();
                     string filtro = txtFiltroAvanzado.Text;
+                    if (filtro == "") {
+                        lblInteraccion.Text = "Filtro obligatorio";
+                        return;
+                    }
+                    lblInteraccion.Text = null;
                     dgvListaArticulos.DataSource = negocio.filtrar(campo, criterio, filtro);
                 }
             }
