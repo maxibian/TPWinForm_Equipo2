@@ -50,19 +50,20 @@ namespace negocio
             }
         }
 
-        public void agregar(Articulo art)
+        public int agregar(Articulo art)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("INSERT INTO ARTICULOS (Nombre, Codigo, Descripcion, IdMarca, IdCategoria, Precio)values(@nombre, @codigo, @descripcion, @idMarca, @idCategoria, @precio)");
+                datos.setearConsulta("INSERT INTO ARTICULOS (Nombre, Codigo, Descripcion, IdMarca, IdCategoria, Precio)values(@nombre, @codigo, @descripcion, @idMarca, @idCategoria, @precio);SELECT CAST(SCOPE_IDENTITY() AS INT);");
                 datos.setearParametro("@nombre", art.Nombre);
                 datos.setearParametro("@codigo", art.Codigo);
                 datos.setearParametro("@descripcion", art.Descripcion);
                 datos.setearParametro("@idMarca", art.Marca.Id);
                 datos.setearParametro("@idCategoria", art.Categoria.Id);
                 datos.setearParametro("@precio", art.Precio);
-                datos.ejecutarAccion();
+                //datos.ejecutarAccion();
+                return (int)datos.ejecutarScalar();
             }
             catch (Exception ex)
             {

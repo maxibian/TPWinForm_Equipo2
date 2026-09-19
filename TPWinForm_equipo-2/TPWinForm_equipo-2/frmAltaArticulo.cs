@@ -60,8 +60,6 @@ namespace TPWinForm_equipo_2
         }
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            //lblValorInvalido1.Visible = false;
-            //lblValorInvalido2.Visible = false;
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
             try
             {
@@ -132,7 +130,13 @@ namespace TPWinForm_equipo_2
                 }
                 else
                 {
-                    articuloNegocio.agregar(art);
+                    int idNuevo = articuloNegocio.agregar(art);
+
+
+
+
+
+
                     MessageBox.Show("Articulo agregado exitosamente");
                 }
                 Close();
