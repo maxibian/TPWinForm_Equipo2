@@ -52,6 +52,11 @@ namespace TPWinForm_equipo_2
         private void btnModificar_Click(object sender, EventArgs e)
         {
             Categoria seleccionada;
+            if (dgvCategorias.CurrentRow == null)
+            {
+                MessageBox.Show("Debe seleccionar una categoria");
+                return;
+            }
             seleccionada = (Categoria)dgvCategorias.CurrentRow.DataBoundItem;
             frmAltaCategorias modificarCategoria = new frmAltaCategorias(seleccionada);
             modificarCategoria.ShowDialog();
@@ -61,13 +66,25 @@ namespace TPWinForm_equipo_2
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             CategoriaNegocio catNegocio = new CategoriaNegocio();
-            Categoria seleccionada = new Categoria();
+            if(dgvCategorias.CurrentRow == null)
+            {
+                MessageBox.Show("Debe seleccionar una categoria");
+                return;
+            } 
+
+            Categoria seleccionada = (Categoria)dgvCategorias.CurrentRow.DataBoundItem;
+
+            if (catNegocio.estaEnUso(seleccionada.Id))
+            {
+                MessageBox.Show("No se puede eliminar la categoria porque está siendo utilizada por uno o mas artículos");
+                return;
+            }
+
             try
             {
-                DialogResult respuesta = MessageBox.Show("¿Estas seguro de que queres eliminarlo?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult respuesta = MessageBox.Show("¿Estas seguro de que queres eliminar la categoria?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if(respuesta == DialogResult.Yes)
                 {
-                    seleccionada = (Categoria)dgvCategorias.CurrentRow.DataBoundItem;
                     catNegocio.eliminar(seleccionada.Id);
                     cargar();
                 }
