@@ -15,6 +15,7 @@ namespace TPWinForm_equipo_2
     public partial class frmAltaImagen : Form
     {
         private int idArt;
+        public Imagen imagenCreada { get; set;  }
         public frmAltaImagen(int id)
         {
             
@@ -29,11 +30,22 @@ namespace TPWinForm_equipo_2
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            Imagen imagen = new Imagen();
-            ImagenNegocio imagenNegocio = new ImagenNegocio();
-            imagen.ImagenUrl = txtImagen.Text.ToString();
-            imagen.IdArticulo = idArt;
-            imagenNegocio.agregar(imagen);
+            //Imagen imagen = new Imagen();
+            //ImagenNegocio imagenNegocio = new ImagenNegocio();
+            //imagen.ImagenUrl = txtImagen.Text.ToString();
+            //imagen.IdArticulo = idArt;
+            //imagenNegocio.agregar(imagen);
+
+            if (string.IsNullOrWhiteSpace(txtImagen.Text))
+            {
+                MessageBox.Show("Ingrese una URL válida");
+                return;
+            }
+            imagenCreada = new Imagen();
+            
+            imagenCreada.ImagenUrl = txtImagen.Text.ToString();
+            //imagen.IdArticulo = idArt;
+
             Close();
         }
     }
