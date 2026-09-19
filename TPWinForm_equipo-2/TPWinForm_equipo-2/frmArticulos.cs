@@ -110,21 +110,17 @@ namespace TPWinForm_equipo_2
                 string criterio = cboCriterio.SelectedItem.ToString();
                 string filtro = txtFiltroAvanzado.Text;
                 dgvListaArticulos.DataSource = negocio.filtrar(campo, criterio, filtro);
-
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
-
         }
 
         private void txtBoxFiltro_TextChanged(object sender, EventArgs e)
         {
             List<Articulo> listaFiltro;
             string filtro = txtBoxFiltro.Text;
-
 
             if (filtro != "")
             {
@@ -134,7 +130,6 @@ namespace TPWinForm_equipo_2
             {
                 listaFiltro = listaArticulos;
             }
-
             dgvListaArticulos.DataSource = null;
             dgvListaArticulos.DataSource = listaFiltro;
         }
@@ -240,6 +235,14 @@ namespace TPWinForm_equipo_2
             {
                 pboArticulo.Load(ruta);
             }
+        }
+
+        private void btnDetalle_Click(object sender, EventArgs e)
+        {
+            Articulo seleccionado;
+            seleccionado = (Articulo)dgvListaArticulos.CurrentRow.DataBoundItem;
+            frmAltaArticulo frmDetalle = new frmAltaArticulo(seleccionado,true);
+            frmDetalle.ShowDialog();
         }
     }
 }

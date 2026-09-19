@@ -47,6 +47,7 @@
             this.cboCriterio = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblCampo = new System.Windows.Forms.Label();
+            this.btnDetalle = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboArticulo)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -266,11 +267,24 @@
             this.lblCampo.TabIndex = 10;
             this.lblCampo.Text = "Campo:";
             // 
+            // btnDetalle
+            // 
+            this.btnDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnDetalle.Location = new System.Drawing.Point(746, 27);
+            this.btnDetalle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDetalle.Name = "btnDetalle";
+            this.btnDetalle.Size = new System.Drawing.Size(90, 30);
+            this.btnDetalle.TabIndex = 19;
+            this.btnDetalle.Text = "Ver detalle";
+            this.btnDetalle.UseVisualStyleBackColor = true;
+            this.btnDetalle.Click += new System.EventHandler(this.btnDetalle_Click);
+            // 
             // frmArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1196, 694);
+            this.Controls.Add(this.btnDetalle);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnSiguiente);
             this.Controls.Add(this.btnAnterior);
@@ -321,6 +335,7 @@
         private System.Windows.Forms.ComboBox cboCriterio;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lblCampo;
+        private System.Windows.Forms.Button btnDetalle;
     }
 }
 

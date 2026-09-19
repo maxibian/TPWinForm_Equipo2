@@ -34,6 +34,20 @@ namespace TPWinForm_equipo_2
             this.art = art;
             Text = "Modificar Artículo";
         }
+        public frmAltaArticulo(Articulo art,bool detalle)
+        {
+            InitializeComponent();
+            this.art = art;
+            Text = "Detalles Artículo";
+            txtCodigo.Enabled=false;
+            txtNombre.Enabled=false;
+            txtDescripcion.Enabled=false;
+            txtPrecio.Enabled=false;
+            cboCategoria.Enabled=false;
+            cboMarca.Enabled=false;
+            btnAgregarImagen.Enabled=false;
+            btnEliminarImagen.Enabled=false;
+        }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
