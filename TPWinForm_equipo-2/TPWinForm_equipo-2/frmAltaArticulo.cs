@@ -295,10 +295,6 @@ namespace TPWinForm_equipo_2
                     {
                         seleccionado = (Imagen)imagenesArticulo[indice];
                         imagenNegocio.eliminar(seleccionado.Id);
-                        //MessageBox.Show("despues count " + listaImagenes.Count);
-                        MessageBox.Show("despues imagenarticulo " + imagenesArticulo.Count);
-                        //--------------
-                        //imagenesArticulo.Remove(seleccionado);
                         //si el indice es menor o igual al count poner siguiente n| lbl y siguiente pic
                         //sino, restar 1 lbl y 1 pic anterior mostrar
                         //sino mostrar placeholder y lbl 0
@@ -324,47 +320,13 @@ namespace TPWinForm_equipo_2
                         lblIndex.Text = "1";
                         indice = 0;
 
-                        //-------------------
-                        //if(indice>0)
-                        //{
-
-                        //    lblIndex.Text = (indice).ToString();
-                        //    listaImagenes = imagenNegocio.listarImagenes();
-                        //    imagenesArticulo.Clear();
-                        //    foreach (Imagen img in listaImagenes)
-                        //    {
-                        //        if (idArt == img.IdArticulo)
-                        //        {
-                        //            imagenesArticulo.Add(img);
-                        //        }
-                        //    }
-                        //    pboAltaArticulos.Load(imagenesArticulo[indice - 1].ImagenUrl);
-                        //}
-                        //else if(indice == 0)
-                        //{
-                        //    pboAltaArticulos.Load(imagenesArticulo[imagenesArticulo.Count - 1].ImagenUrl);
-                        //    lblIndex.Text = (indice+1).ToString();
-                        //    listaImagenes = imagenNegocio.listarImagenes();
-                        //    imagenesArticulo.Clear();
-                        //    foreach (Imagen img in listaImagenes)
-                        //    {
-                        //        if (idArt == img.IdArticulo)
-                        //        {
-                        //            imagenesArticulo.Add(img);
-                        //        }
-                        //    }
-                        //}
-                        //else
-                        //{
-                        //    pboAltaArticulos.Load(ruta);
-                        //}
-                        //--------------------
-                        //MessageBox.Show("despues count " + listaImagenes.Count);
                     }
                     else
                     {
                         pboAltaArticulos.Load(ruta);
                         MessageBox.Show("El artículo no tiene imágenes");
+                        lblIndex.Text = "0";
+                        indice = 0;
                     }
                     MessageBox.Show("dps 2 imagenarticulo " + imagenesArticulo.Count);
                     //cargar();
