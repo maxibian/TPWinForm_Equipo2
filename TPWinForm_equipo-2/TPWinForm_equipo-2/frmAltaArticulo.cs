@@ -34,19 +34,19 @@ namespace TPWinForm_equipo_2
             this.art = art;
             Text = "Modificar Artículo";
         }
-        public frmAltaArticulo(Articulo art,bool detalle)
+        public frmAltaArticulo(Articulo art, bool detalle)
         {
             InitializeComponent();
             this.art = art;
             Text = "Detalles Artículo";
-            txtCodigo.Enabled=false;
-            txtNombre.Enabled=false;
-            txtDescripcion.Enabled=false;
-            txtPrecio.Enabled=false;
-            cboCategoria.Enabled=false;
-            cboMarca.Enabled=false;
-            btnAgregarImagen.Enabled=false;
-            btnEliminarImagen.Enabled=false;
+            txtCodigo.Enabled = false;
+            txtNombre.Enabled = false;
+            txtDescripcion.Enabled = false;
+            txtPrecio.Enabled = false;
+            cboCategoria.Enabled = false;
+            cboMarca.Enabled = false;
+            btnAgregarImagen.Enabled = false;
+            btnEliminarImagen.Enabled = false;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -54,7 +54,7 @@ namespace TPWinForm_equipo_2
             Close();
         }
         private void lblInvalido(bool value)
-            {
+        {
             lblValorInvalido1.Visible = value;
             lblValorInvalido2.Visible = value;
         }
@@ -82,7 +82,7 @@ namespace TPWinForm_equipo_2
                 }
                 if (!string.IsNullOrWhiteSpace(txtDescripcion.Text) &&
     txtDescripcion.Text.All(c => char.IsLetter(c) || c == ' '))
-                { 
+                {
                     art.Descripcion = txtDescripcion.Text;
                     lblDescripcionInvalida.Visible = false;
                     lblInvalido(false);
@@ -205,7 +205,7 @@ namespace TPWinForm_equipo_2
                         try
                         {
                             pboAltaArticulos.Load(imagenesArticulo[0].ImagenUrl);
-                            
+
                         }
                         catch (Exception)
                         {
@@ -224,15 +224,26 @@ namespace TPWinForm_equipo_2
 
         private void btnAgregarImagen_Click(object sender, EventArgs e)
         {
-            frmAltaImagen frmAltaImagen = new frmAltaImagen(idArt);
-            frmAltaImagen.ShowDialog();
-            imagenesArticulo.Add(frmAltaImagen.imagenCreada);
+            try
+            {
+                frmAltaImagen frmAltaImagen = new frmAltaImagen(idArt);
+                
 
-            indice = imagenesArticulo.Count - 1;
+                    imagenesArticulo.Add(frmAltaImagen.imagenCreada);
 
-            pboAltaArticulos.Load(imagenesArticulo[indice].ImagenUrl);
+                    indice = imagenesArticulo.Count - 1;
 
-            lblIndex.Text = (indice + 1).ToString();
+                    pboAltaArticulos.Load(imagenesArticulo[indice].ImagenUrl);
+
+                    lblIndex.Text = (indice + 1).ToString();
+                
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
         }
 
         private void btnEliminarImagen_Click(object sender, EventArgs e)
@@ -244,14 +255,22 @@ namespace TPWinForm_equipo_2
                 DialogResult respuesta = MessageBox.Show("¿Realmente quiere eliminar el Artículo?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (respuesta == DialogResult.Yes)
                 {
-                    seleccionado = (Imagen)imagenesArticulo[indice];
-                    imagenNegocio.eliminar(seleccionado.Id);
+                    if(imagenesArticulo.Count>0)
+                    {
+                        seleccionado = (Imagen)imagenesArticulo[indice];
+                        imagenNegocio.eliminar(seleccionado.Id);
+                    }
+                    else
+                    {
+                        MessageBox.Show("El artículo no tiene imágenes");
+                    }
+                    
                     //cargar();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
 
