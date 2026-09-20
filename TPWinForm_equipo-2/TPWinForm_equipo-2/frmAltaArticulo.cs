@@ -139,13 +139,13 @@ namespace TPWinForm_equipo_2
                 else
                 {
                     int idNuevo = articuloNegocio.agregar(art);
-                    MessageBox.Show("IdNuevo " + idNuevo);
+                    
                     foreach (Imagen imagen in imagenesArticulo)
                     {
-                        MessageBox.Show("antes " + idNuevo);
+                        
                         imagen.IdArticulo = idNuevo;
                         imagenNegocio.agregar(imagen);
-                        MessageBox.Show("despues " + idNuevo);
+                        
                     }
 
 
@@ -243,7 +243,7 @@ namespace TPWinForm_equipo_2
                         pboAltaArticulos.Load(ruta);
                     }
 
-                    lblIndex.Text = (indice + 1).ToString();
+                    lblIndex.Text = (imagenesArticulo.Count).ToString();
                     if (imagenesArticulo.Count > 1)
                     {
                         btnSiguiente.Enabled = true;
@@ -272,8 +272,45 @@ namespace TPWinForm_equipo_2
                 {
                     if(imagenesArticulo.Count>0)
                     {
+                        MessageBox.Show("antes count " + listaImagenes.Count);
                         seleccionado = (Imagen)imagenesArticulo[indice];
                         imagenNegocio.eliminar(seleccionado.Id);
+                        //-------------------
+                        //if(indice>0)
+                        //{
+                            
+                        //    lblIndex.Text = (indice).ToString();
+                        //    listaImagenes = imagenNegocio.listarImagenes();
+                        //    imagenesArticulo.Clear();
+                        //    foreach (Imagen img in listaImagenes)
+                        //    {
+                        //        if (idArt == img.IdArticulo)
+                        //        {
+                        //            imagenesArticulo.Add(img);
+                        //        }
+                        //    }
+                        //    pboAltaArticulos.Load(imagenesArticulo[indice - 1].ImagenUrl);
+                        //}
+                        //else if(indice == 0)
+                        //{
+                        //    pboAltaArticulos.Load(imagenesArticulo[imagenesArticulo.Count - 1].ImagenUrl);
+                        //    lblIndex.Text = (indice+1).ToString();
+                        //    listaImagenes = imagenNegocio.listarImagenes();
+                        //    imagenesArticulo.Clear();
+                        //    foreach (Imagen img in listaImagenes)
+                        //    {
+                        //        if (idArt == img.IdArticulo)
+                        //        {
+                        //            imagenesArticulo.Add(img);
+                        //        }
+                        //    }
+                        //}
+                        //else
+                        //{
+                        //    pboAltaArticulos.Load(ruta);
+                        //}
+                        //--------------------
+                        MessageBox.Show("despues count " + listaImagenes.Count);
                     }
                     else
                     {
