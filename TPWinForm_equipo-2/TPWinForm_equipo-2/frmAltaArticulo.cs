@@ -227,15 +227,27 @@ namespace TPWinForm_equipo_2
             try
             {
                 frmAltaImagen frmAltaImagen = new frmAltaImagen(idArt);
-                
+                frmAltaImagen.ShowDialog();
 
                     imagenesArticulo.Add(frmAltaImagen.imagenCreada);
 
                     indice = imagenesArticulo.Count - 1;
-
+                try
+                {
                     pboAltaArticulos.Load(imagenesArticulo[indice].ImagenUrl);
 
+                }
+                catch (Exception)
+                {
+                    pboAltaArticulos.Load(ruta);
+                }
+
                     lblIndex.Text = (indice + 1).ToString();
+                if(imagenesArticulo.Count>1)
+                {
+                    btnSiguiente.Enabled = true;
+                    btnAnterior.Enabled = true;
+                }
                 
             }
             catch (Exception ex)
