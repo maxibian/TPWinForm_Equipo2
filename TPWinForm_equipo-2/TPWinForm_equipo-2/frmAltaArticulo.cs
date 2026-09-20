@@ -139,13 +139,13 @@ namespace TPWinForm_equipo_2
                 else
                 {
                     int idNuevo = articuloNegocio.agregar(art);
-                    
+
                     foreach (Imagen imagen in imagenesArticulo)
                     {
-                        
+
                         imagen.IdArticulo = idNuevo;
                         imagenNegocio.agregar(imagen);
-                        
+
                     }
 
 
@@ -178,12 +178,14 @@ namespace TPWinForm_equipo_2
                 cboCategoria.DataSource = categoriaNegocio.listarCategorias();
                 cboCategoria.ValueMember = "Id";
                 cboCategoria.DisplayMember = "Descripcion";
-                if(art == null)
+                if (art == null)
                 {
                     pboAltaArticulos.Load(ruta);
                     lblIndex.Text = "0";
+                    btnEliminarImagen.Enabled = false;
+
                 }
-                
+
                 if (art != null)
                 {
                     idArt = art.Id;
@@ -207,10 +209,12 @@ namespace TPWinForm_equipo_2
                     {
                         pboAltaArticulos.Load(ruta);
                         lblIndex.Text = "0";
+                        btnEliminarImagen.Enabled = false;
                     }
                     //Imagen
                     if (imagenesArticulo.Count > 0)
                     {
+
                         try
                         {
                             pboAltaArticulos.Load(imagenesArticulo[0].ImagenUrl);
@@ -222,6 +226,7 @@ namespace TPWinForm_equipo_2
                         }
                         btnSiguiente.Enabled = true;
                         btnAnterior.Enabled = true;
+                        btnEliminarImagen.Enabled = true;
                     }
                 }
             }
@@ -237,10 +242,14 @@ namespace TPWinForm_equipo_2
             {
                 frmAltaImagen frmAltaImagen = new frmAltaImagen(idArt);
                 frmAltaImagen.ShowDialog();
-                if(frmAltaImagen.imagenCreada != null)
+                if (frmAltaImagen.imagenCreada != null)
                 {
-                    imagenesArticulo.Add(frmAltaImagen.imagenCreada);
-
+                    
+                        imagenesArticulo.Add(frmAltaImagen.imagenCreada);
+                    //-----------
+                    
+                    //-----------
+                    btnEliminarImagen.Enabled = true;
                     indice = imagenesArticulo.Count - 1;
                     try
                     {
@@ -259,8 +268,8 @@ namespace TPWinForm_equipo_2
                         btnAnterior.Enabled = true;
                     }
                 }
-                    
-                
+
+
             }
             catch (Exception ex)
             {
@@ -276,18 +285,49 @@ namespace TPWinForm_equipo_2
             Imagen seleccionado;
             try
             {
+                //MessageBox.Show("antes count " + listaImagenes.Count);
+                MessageBox.Show("antes imagenarticulo " + imagenesArticulo.Count);
                 DialogResult respuesta = MessageBox.Show("¿Realmente quiere eliminar el Artículo?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (respuesta == DialogResult.Yes)
                 {
-                    if(imagenesArticulo.Count>0)
+
+                    if (imagenesArticulo.Count > 0)
                     {
-                        //MessageBox.Show("antes count " + listaImagenes.Count);
                         seleccionado = (Imagen)imagenesArticulo[indice];
                         imagenNegocio.eliminar(seleccionado.Id);
+                        //MessageBox.Show("despues count " + listaImagenes.Count);
+                        MessageBox.Show("despues imagenarticulo " + imagenesArticulo.Count);
+                        //--------------
+                        //imagenesArticulo.Remove(seleccionado);
+                        //si el indice es menor o igual al count poner siguiente n| lbl y siguiente pic
+                        //sino, restar 1 lbl y 1 pic anterior mostrar
+                        //sino mostrar placeholder y lbl 0
+                        listaImagenes = imagenNegocio.listarImagenes();
+                        imagenesArticulo.Clear();
+                        foreach (Imagen img in listaImagenes)
+                        {
+                            if (idArt == img.IdArticulo)
+                            {
+                                imagenesArticulo.Add(img);
+                            }
+                        }
+                        try
+                        {
+                            pboAltaArticulos.Load(imagenesArticulo[0].ImagenUrl);
+                            
+                        }
+                        catch (Exception)
+                        {
+                            pboAltaArticulos.Load(ruta);
+                            
+                        }
+                        lblIndex.Text = "1";
+                        indice = 0;
+
                         //-------------------
                         //if(indice>0)
                         //{
-                            
+
                         //    lblIndex.Text = (indice).ToString();
                         //    listaImagenes = imagenNegocio.listarImagenes();
                         //    imagenesArticulo.Clear();
@@ -323,9 +363,10 @@ namespace TPWinForm_equipo_2
                     }
                     else
                     {
+                        pboAltaArticulos.Load(ruta);
                         MessageBox.Show("El artículo no tiene imágenes");
                     }
-                    
+                    MessageBox.Show("dps 2 imagenarticulo " + imagenesArticulo.Count);
                     //cargar();
                 }
             }

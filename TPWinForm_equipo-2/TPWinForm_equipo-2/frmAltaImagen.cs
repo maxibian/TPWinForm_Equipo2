@@ -45,6 +45,7 @@ namespace TPWinForm_equipo_2
             
             imagenCreada.ImagenUrl = txtImagen.Text.ToString();
             //imagen.IdArticulo = idArt;
+            
 
             Close();
         }
