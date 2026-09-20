@@ -178,6 +178,12 @@ namespace TPWinForm_equipo_2
                 cboCategoria.DataSource = categoriaNegocio.listarCategorias();
                 cboCategoria.ValueMember = "Id";
                 cboCategoria.DisplayMember = "Descripcion";
+                if(art == null)
+                {
+                    pboAltaArticulos.Load(ruta);
+                    lblIndex.Text = "0";
+                }
+                
                 if (art != null)
                 {
                     idArt = art.Id;
@@ -198,7 +204,10 @@ namespace TPWinForm_equipo_2
                     cboCategoria.SelectedValue = art.Categoria.Id;
 
                     if (imagenesArticulo.Count == 0)
+                    {
                         pboAltaArticulos.Load(ruta);
+                        lblIndex.Text = "0";
+                    }
                     //Imagen
                     if (imagenesArticulo.Count > 0)
                     {
@@ -272,7 +281,7 @@ namespace TPWinForm_equipo_2
                 {
                     if(imagenesArticulo.Count>0)
                     {
-                        MessageBox.Show("antes count " + listaImagenes.Count);
+                        //MessageBox.Show("antes count " + listaImagenes.Count);
                         seleccionado = (Imagen)imagenesArticulo[indice];
                         imagenNegocio.eliminar(seleccionado.Id);
                         //-------------------
@@ -310,7 +319,7 @@ namespace TPWinForm_equipo_2
                         //    pboAltaArticulos.Load(ruta);
                         //}
                         //--------------------
-                        MessageBox.Show("despues count " + listaImagenes.Count);
+                        //MessageBox.Show("despues count " + listaImagenes.Count);
                     }
                     else
                     {
