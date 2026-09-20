@@ -17,7 +17,7 @@ namespace negocio
             List<Imagen> lista = new List<Imagen>();
             try
             {
-                datos.setearConsulta("SELECT Id, IdArticulo, ImagenUrl FROM IMAGENES");
+                datos.setearConsulta("SELECT Id, IdArticulo, ImagenUrl FROM IMAGENES ORDER BY Id ASC");
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
