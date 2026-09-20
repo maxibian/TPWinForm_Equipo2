@@ -66,6 +66,7 @@ namespace TPWinForm_equipo_2
             {
                 if (art == null)
                     art = new Articulo();
+                //MessageBox.Show("articulo " + art.Id);
                 if (!string.IsNullOrWhiteSpace(txtNombre.Text) &&
     txtNombre.Text.All(c => char.IsLetter(c) || c == ' '))
                 {
@@ -123,6 +124,16 @@ namespace TPWinForm_equipo_2
                 if (art.Id != 0)
                 {
                     articuloNegocio.modificar(art);
+
+                    foreach (Imagen imagen in imagenesArticulo)
+                    {
+                        if (imagen.Id == 0)
+                        {
+                            imagen.IdArticulo = art.Id;
+                            imagenNegocio.agregar(imagen);
+                        }
+                    }
+
                     MessageBox.Show("Modificado exitosamente");
                 }
                 else
@@ -194,13 +205,14 @@ namespace TPWinForm_equipo_2
                         try
                         {
                             pboAltaArticulos.Load(imagenesArticulo[0].ImagenUrl);
-                            btnSiguiente.Enabled = true;
-                            btnAnterior.Enabled = true;
+                            
                         }
                         catch (Exception)
                         {
                             pboAltaArticulos.Load(ruta);
                         }
+                        btnSiguiente.Enabled = true;
+                        btnAnterior.Enabled = true;
                     }
                 }
             }
@@ -215,6 +227,12 @@ namespace TPWinForm_equipo_2
             frmAltaImagen frmAltaImagen = new frmAltaImagen(idArt);
             frmAltaImagen.ShowDialog();
             imagenesArticulo.Add(frmAltaImagen.imagenCreada);
+
+            indice = imagenesArticulo.Count - 1;
+
+            pboAltaArticulos.Load(imagenesArticulo[indice].ImagenUrl);
+
+            lblIndex.Text = (indice + 1).ToString();
         }
 
         private void btnEliminarImagen_Click(object sender, EventArgs e)
