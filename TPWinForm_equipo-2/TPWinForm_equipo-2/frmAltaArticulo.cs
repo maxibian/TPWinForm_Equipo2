@@ -228,26 +228,29 @@ namespace TPWinForm_equipo_2
             {
                 frmAltaImagen frmAltaImagen = new frmAltaImagen(idArt);
                 frmAltaImagen.ShowDialog();
-
+                if(frmAltaImagen.imagenCreada != null)
+                {
                     imagenesArticulo.Add(frmAltaImagen.imagenCreada);
 
                     indice = imagenesArticulo.Count - 1;
-                try
-                {
-                    pboAltaArticulos.Load(imagenesArticulo[indice].ImagenUrl);
+                    try
+                    {
+                        pboAltaArticulos.Load(imagenesArticulo[indice].ImagenUrl);
 
-                }
-                catch (Exception)
-                {
-                    pboAltaArticulos.Load(ruta);
-                }
+                    }
+                    catch (Exception)
+                    {
+                        pboAltaArticulos.Load(ruta);
+                    }
 
                     lblIndex.Text = (indice + 1).ToString();
-                if(imagenesArticulo.Count>1)
-                {
-                    btnSiguiente.Enabled = true;
-                    btnAnterior.Enabled = true;
+                    if (imagenesArticulo.Count > 1)
+                    {
+                        btnSiguiente.Enabled = true;
+                        btnAnterior.Enabled = true;
+                    }
                 }
+                    
                 
             }
             catch (Exception ex)
