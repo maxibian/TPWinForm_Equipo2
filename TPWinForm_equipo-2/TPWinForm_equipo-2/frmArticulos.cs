@@ -84,6 +84,7 @@ namespace TPWinForm_equipo_2
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+            ImagenNegocio imagenNegocio = new ImagenNegocio();
             Articulo seleccionado;
             try
             {
@@ -92,7 +93,16 @@ namespace TPWinForm_equipo_2
                 {
                     seleccionado = (Articulo)dgvListaArticulos.CurrentRow.DataBoundItem;
                     articuloNegocio.eliminar(seleccionado.Id);
+                    //----------
+                    List <Imagen> imagenesArticulo = imagenNegocio.listarImagenes();
+                    foreach (Imagen imagen in imagenArticulos)
+                    {
+                        if(imagen.IdArticulo == seleccionado.Id)
+                            imagenNegocio.eliminar(imagen.Id);
+                    }
+                    //---------
                     cargar();
+
                 }
             }
             catch (Exception ex)
