@@ -259,9 +259,6 @@ namespace TPWinForm_equipo_2
                 {
 
                     imagenesArticulo.Add(frmAltaImagen.imagenCreada);
-                    //-----------
-
-                    //-----------
                     btnEliminarImagen.Enabled = true;
                     indice = imagenesArticulo.Count - 1;
                     try
@@ -300,8 +297,6 @@ namespace TPWinForm_equipo_2
             {
                 if (imagenesArticulo.Count == 0)
                     return;
-                //MessageBox.Show("antes count " + listaImagenes.Count);
-                //MessageBox.Show("antes imagenarticulo " + imagenesArticulo.Count);
                 DialogResult respuesta = MessageBox.Show("¿Realmente quiere eliminar el Artículo?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (respuesta != DialogResult.Yes)
                     return;
@@ -324,14 +319,16 @@ namespace TPWinForm_equipo_2
                 }
                 try
                 {
-                    pboAltaArticulos.Load(imagenesArticulo[indice].ImagenUrl);
+                    pboAltaArticulos.Load(imagenesArticulo[0].ImagenUrl);
+                    lblIndex.Text="1";
                 }
                 catch (Exception)
                 {
 
                     pboAltaArticulos.Load(ruta);
+                    lblIndex.Text = "0";
                 }
-                lblIndex.Text = (indice + 1).ToString();
+
 
                 btnEliminarImagen.Enabled = true;
 
