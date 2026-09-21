@@ -150,7 +150,8 @@ namespace TPWinForm_equipo_2
                             imagenNegocio.agregar(imagen);
                         }
                     }
-                    MessageBox.Show("Modificado exitosamente");
+                    if(txtCodigo.Enabled==true)
+                        MessageBox.Show("Modificado exitosamente");
                 }
                 else
                 {
