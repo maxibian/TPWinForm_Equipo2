@@ -66,9 +66,8 @@ namespace TPWinForm_equipo_2
             {
                 if (art == null)
                     art = new Articulo();
-                //MessageBox.Show("articulo " + art.Id);
                 if (!string.IsNullOrWhiteSpace(txtNombre.Text) &&
-    txtNombre.Text.All(c => char.IsLetter(c) || c == ' '))
+    txtNombre.Text.All(c => char.IsLetter(c) || char.IsDigit(c) || c == ' '))
                 {
                     art.Nombre = txtNombre.Text;
                     lblNombreInvalido.Visible = false;
@@ -81,7 +80,7 @@ namespace TPWinForm_equipo_2
                     return;
                 }
                 if (!string.IsNullOrWhiteSpace(txtDescripcion.Text) &&
-    txtDescripcion.Text.All(c => char.IsLetter(c) || c == ' '))
+    txtDescripcion.Text.All(c => char.IsLetter(c) || c == ' ' || char.IsPunctuation(c) || char.IsSymbol(c)))
                 {
                     art.Descripcion = txtDescripcion.Text;
                     lblDescripcionInvalida.Visible = false;
@@ -124,7 +123,6 @@ namespace TPWinForm_equipo_2
                 if (art.Id != 0)
                 {
                     articuloNegocio.modificar(art);
-                    //--------------
                     foreach (Imagen imagenOriginal in listaImagenes)
                     {
                         if (imagenOriginal.IdArticulo == art.Id)
@@ -143,11 +141,7 @@ namespace TPWinForm_equipo_2
                                 imagenNegocio.eliminar(imagenOriginal.Id);
                             }
                         }
-
                     }
-
-
-                    //-------------
                     foreach (Imagen imagen in imagenesArticulo)
                     {
                         if (imagen.Id == 0)
@@ -156,24 +150,17 @@ namespace TPWinForm_equipo_2
                             imagenNegocio.agregar(imagen);
                         }
                     }
-
                     MessageBox.Show("Modificado exitosamente");
                 }
                 else
                 {
                     int idNuevo = articuloNegocio.agregar(art);
-
                     foreach (Imagen imagen in imagenesArticulo)
                     {
 
                         imagen.IdArticulo = idNuevo;
                         imagenNegocio.agregar(imagen);
-
                     }
-
-
-
-
                     MessageBox.Show("Articulo agregado exitosamente");
                 }
                 Close();
@@ -183,7 +170,6 @@ namespace TPWinForm_equipo_2
                 MessageBox.Show(ex.ToString());
             }
         }
-
         private void frmAltaArticulo_Load(object sender, EventArgs e)
         {
 
@@ -206,7 +192,6 @@ namespace TPWinForm_equipo_2
                     pboAltaArticulos.Load(ruta);
                     lblIndex.Text = "0";
                     btnEliminarImagen.Enabled = false;
-
                 }
 
                 if (art != null)
@@ -234,10 +219,8 @@ namespace TPWinForm_equipo_2
                         lblIndex.Text = "0";
                         btnEliminarImagen.Enabled = false;
                     }
-                    //Imagen
                     if (imagenesArticulo.Count > 0)
                     {
-
                         try
                         {
                             pboAltaArticulos.Load(imagenesArticulo[0].ImagenUrl);
@@ -274,7 +257,6 @@ namespace TPWinForm_equipo_2
                     try
                     {
                         pboAltaArticulos.Load(imagenesArticulo[indice].ImagenUrl);
-
                     }
                     catch (Exception)
                     {
@@ -288,21 +270,15 @@ namespace TPWinForm_equipo_2
                         btnAnterior.Enabled = true;
                     }
                 }
-
-
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.ToString());
             }
-
         }
 
         private void btnEliminarImagen_Click(object sender, EventArgs e)
         {
-
-
             try
             {
                 if (imagenesArticulo.Count == 0)
@@ -310,13 +286,8 @@ namespace TPWinForm_equipo_2
                 DialogResult respuesta = MessageBox.Show("¿Realmente quiere eliminar el Artículo?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (respuesta != DialogResult.Yes)
                     return;
-
-
-
                 Imagen seleccionado = imagenesArticulo[indice];
-
                 imagenesArticulo.RemoveAt(indice);
-
                 if (imagenesArticulo.Count == 0)
                 {
                     pboAltaArticulos.Load(ruta);
@@ -334,14 +305,11 @@ namespace TPWinForm_equipo_2
                 }
                 catch (Exception)
                 {
-
                     pboAltaArticulos.Load(ruta);
                     lblIndex.Text = "0";
                 }
 
-
                 btnEliminarImagen.Enabled = true;
-
                 if (imagenesArticulo.Count > 1)
                 {
                     btnSiguiente.Enabled = true;
@@ -352,7 +320,6 @@ namespace TPWinForm_equipo_2
                     btnSiguiente.Enabled = false;
                     btnAnterior.Enabled = false;
                 }
-
             }
             catch (Exception ex)
             {
