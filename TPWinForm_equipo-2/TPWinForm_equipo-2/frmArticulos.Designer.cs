@@ -46,6 +46,7 @@
             this.btnFiltro = new System.Windows.Forms.Button();
             this.cboCriterio = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnLimpiar = new System.Windows.Forms.Button();
             this.lblInteraccion = new System.Windows.Forms.Label();
             this.lblCampo = new System.Windows.Forms.Label();
             this.btnDetalle = new System.Windows.Forms.Button();
@@ -268,10 +269,10 @@
             this.btnFiltro.FlatAppearance.BorderSize = 0;
             this.btnFiltro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFiltro.ForeColor = System.Drawing.Color.White;
-            this.btnFiltro.Location = new System.Drawing.Point(155, 230);
+            this.btnFiltro.Location = new System.Drawing.Point(165, 230);
             this.btnFiltro.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnFiltro.Name = "btnFiltro";
-            this.btnFiltro.Size = new System.Drawing.Size(120, 40);
+            this.btnFiltro.Size = new System.Drawing.Size(110, 35);
             this.btnFiltro.TabIndex = 9;
             this.btnFiltro.Text = "Buscar";
             this.btnFiltro.UseVisualStyleBackColor = false;
@@ -289,6 +290,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnLimpiar);
             this.groupBox1.Controls.Add(this.lblInteraccion);
             this.groupBox1.Controls.Add(this.cboCriterio);
             this.groupBox1.Controls.Add(this.btnFiltro);
@@ -305,6 +307,22 @@
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtro Avanzado";
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.btnLimpiar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLimpiar.FlatAppearance.BorderSize = 0;
+            this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLimpiar.ForeColor = System.Drawing.Color.White;
+            this.btnLimpiar.Location = new System.Drawing.Point(47, 230);
+            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(110, 35);
+            this.btnLimpiar.TabIndex = 17;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = false;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // lblInteraccion
             // 
@@ -406,6 +424,7 @@
         private System.Windows.Forms.Label lblCampo;
         private System.Windows.Forms.Button btnDetalle;
         private System.Windows.Forms.Label lblInteraccion;
+        private System.Windows.Forms.Button btnLimpiar;
     }
 }
 

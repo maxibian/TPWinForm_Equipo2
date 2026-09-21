@@ -184,6 +184,7 @@ namespace TPWinForm_equipo_2
 
         private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cboCampo.SelectedIndex == -1) return;
             string opcion = cboCampo.SelectedItem.ToString();
             if (opcion == "Precio")
             {
@@ -293,5 +294,14 @@ namespace TPWinForm_equipo_2
             frmDetalle.ShowDialog();
         }
 
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            cboCampo.SelectedIndex = -1;
+            cboCriterio.SelectedIndex = -1;
+            txtFiltroAvanzado.Text = "";
+            lblInteraccion.Text = "";
+            dgvListaArticulos.DataSource = negocio.listarArticulos();
+        }
     }
 }
