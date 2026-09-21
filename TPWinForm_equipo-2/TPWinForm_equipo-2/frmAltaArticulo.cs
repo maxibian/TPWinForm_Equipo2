@@ -127,13 +127,23 @@ namespace TPWinForm_equipo_2
                     //--------------
                     foreach (Imagen imagenOriginal in listaImagenes)
                     {
-                        bool sigueEnLaLista = imagenesArticulo
-                            .Any(x => x.Id == imagenOriginal.Id);
-
-                        if (!sigueEnLaLista)
+                        if (imagenOriginal.IdArticulo == art.Id)
                         {
-                            imagenNegocio.eliminar(imagenOriginal.Id);
+                            bool existe = false;
+                            foreach (Imagen img in imagenesArticulo)
+                            {
+                                if (img.Id == imagenOriginal.Id)
+                                {
+                                    existe = true;
+                                    break;
+                                }
+                            }
+                            if (!existe)
+                            {
+                                imagenNegocio.eliminar(imagenOriginal.Id);
+                            }
                         }
+
                     }
 
 
@@ -320,7 +330,7 @@ namespace TPWinForm_equipo_2
                 try
                 {
                     pboAltaArticulos.Load(imagenesArticulo[0].ImagenUrl);
-                    lblIndex.Text="1";
+                    lblIndex.Text = "1";
                 }
                 catch (Exception)
                 {
